@@ -1,6 +1,4 @@
-/* Approved typography only. Original content, spacing and app state are untouched.
-   Applies the same semantic/fallback grouping and responsive px deltas as the review.
-   No line-height, dimensions, spacing, font family, weight or color overrides. */
+/* M3.1.2: larger reading and input text; retain approved interactive text sizes. */
 (function(){
  'use strict';
  var groups=[
@@ -37,13 +35,29 @@
   var all=Array.from(document.body.querySelectorAll('*')).filter(function(el){return !el.closest('svg,script,style,noscript')&&!el.classList.contains('material-symbols-rounded');});
   all.forEach(function(el){el.removeAttribute('data-shin-font-group');el.removeAttribute('data-shin-font-id');});
   // Measure all original sizes before applying any overrides, including inherited text.
-  var measured=all.filter(function(el){return ['INPUT','TEXTAREA','SELECT'].includes(el.tagName)||Array.from(el.childNodes).some(function(c){return c.nodeType===3&&c.textContent.trim();});}).map(function(el){return {el:el,size:parseFloat(getComputedStyle(el).fontSize)};});
+  var measured=all.filter(function(el){return ['INPUT','TEXTAREA','SELECT'].includes(el.tagName)||Array.from(el.childNodes).some(function(c){return c.nodeType===3&&c.textContent.trim();});}).map(function(el){var cs=getComputedStyle(el);return {el:el,size:parseFloat(cs.fontSize),line:parseFloat(cs.lineHeight)};});
   var css=[];
   measured.forEach(function(m,i){
    var id=classify(m.el,m.size),g=byId[id];m.el.dataset.shinFontGroup=id;
-   if(values[id]===undefined)return;
+   var previous=Math.max(8,m.size+(values[id]===undefined?0:values[id]-g.base));
+   var mobile=window.innerWidth<768;
+   var heading=['page','habit','dialog','section'].indexOf(id)>=0;
+   var field=m.el.matches('input:not([type=checkbox]):not([type=radio]):not([type=range]),textarea,select');
+   var interactive=!!m.el.closest('button,a,[role=button],[role=tab],summary,.m3-navigation');
+   var postage=!!m.el.closest('.postage37');
+   var size=previous, line='';
+   if(heading)size=previous+2;
+   else if(field)size=Math.max(mobile?24:22,previous+4);
+   else if(!interactive&&!postage){
+    if(['eyebrow','meta'].indexOf(id)>=0||m.size<=12)size=Math.max(18,previous+(mobile?3:2));
+    else size=Math.max(mobile?22:21,previous+(mobile?3:2));
+   }
+   if(size!==previous){
+    var ratio=heading?1.3:Math.max(1.5,Number.isFinite(m.line)?m.line/m.size:1.5);
+    line='line-height:'+Number((size*ratio).toFixed(2))+'px!important;';
+   }
    m.el.dataset.shinFontId=i;
-   css.push('[data-shin-font-id="'+i+'"]{font-size:'+Math.max(8,m.size+values[id]-g.base)+'px!important;}');
+   css.push('[data-shin-font-id="'+i+'"]{font-size:'+size+'px!important;'+line+'}');
   });
   sheet.textContent=css.join('\n');observer.observe(document.body,{subtree:true,childList:true});
  }
