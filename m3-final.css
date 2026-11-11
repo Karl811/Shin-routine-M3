@@ -1,0 +1,5 @@
+/* Final audit: bounded fixes to overflow, readable text and leftover week surfaces. */
+.m3-review .sheet .igrid{grid-template-columns:repeat(6,minmax(0,1fr))}.m3-review .sheet .igrid button{min-width:0;min-height:44px;opacity:1}.m3-review .sheet #wkBud,.m3-review .sheet #wkCode{font-size:16px!important}
+.m3-review input::placeholder,.m3-review textarea::placeholder{color:var(--muted);opacity:1}.m3-habit-card .m3-button.text,.m3-journal-days button[aria-pressed=true]{color:var(--on-primary-container)}
+.m3-review .sheet .wk{background:var(--surface-low);border:0;box-shadow:none}.m3-review .sheet .wkshin{background:var(--surface);border:1px solid var(--outline-variant)}.m3-review .sheet .wkshin small{color:var(--primary)}.m3-review .sheet .wk__hb{background:var(--surface);box-shadow:none}.m3-review .sheet .wnotes{border-color:var(--outline-variant)}
+@media(max-width:359px){.m3-review .sheet .igrid{grid-template-columns:repeat(5,minmax(0,1fr))}}

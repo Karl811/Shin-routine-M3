@@ -1,0 +1,4 @@
+/* Deployment-only presentation; normal use has no review banner. */
+.m3-release-demo{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:36px;padding:0 20px;background:var(--primary-container);color:var(--on-primary-container);font-size:12px}.m3-release-demo button{background:none;border:0;min-height:36px;color:inherit;font:inherit;font-weight:600;padding:0 8px}
+.m3-release .runtime32{position:relative;left:auto;right:auto;top:auto;transform:none;width:auto;max-width:none;margin:8px 20px 12px}.m3-release.runtime-visible32.shell .m3-main{padding-top:8px}
+@media(min-width:700px){.m3-release-demo{margin-left:96px;padding-left:32px;padding-right:32px}.m3-release .runtime32{margin-left:128px;margin-right:32px}.m3-release.runtime-visible32.shell .m3-main{padding-top:12px}}
