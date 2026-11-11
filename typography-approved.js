@@ -1,4 +1,4 @@
-/* M3.1.2: larger reading and input text; retain approved interactive text sizes. */
+/* M3.1.4: based directly on M3.1.2; balanced reading hierarchy and larger inputs. */
 (function(){
  'use strict';
  var groups=[
@@ -51,6 +51,18 @@
    else if(!interactive&&!postage){
     if(['eyebrow','meta'].indexOf(id)>=0||m.size<=12)size=Math.max(18,previous+(mobile?3:2));
     else size=Math.max(mobile?22:21,previous+(mobile?3:2));
+   }
+   // Refine M3.1.2 by content role. Preserve approved controls and compact chrome.
+   var sectionLabel=!!m.el.closest('.hw__k,.m3-kicker');
+   var chrome=!!m.el.closest('.m3-top-actions,.m3-heading>span,.m3-count,.m3-progress,.m3-week-dots,.m3-journal-days,.f2-day,.f3-stats,.m3-card-pagination');
+   if(heading)size+=1;
+   else if(field)size=Math.max(mobile?27:25,size+3);
+   else if(!interactive&&!postage&&!sectionLabel&&!chrome){
+    var prose=['body','lesson','notes','trigger','action','japanese'].indexOf(id)>=0;
+    var small=['meta','eyebrow'].indexOf(id)>=0||m.size<=12;
+    if(small)size=Math.max(size,Math.min(21,size+2));
+    else if(prose)size+=2;
+    else if(size<=24)size=Math.min(25,size+2);
    }
    if(size!==previous){
     var ratio=heading?1.3:Math.max(1.5,Number.isFinite(m.line)?m.line/m.size:1.5);
