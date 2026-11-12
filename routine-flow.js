@@ -1,4 +1,4 @@
-/* M3.2.0 · approved Today / Week / Journey flow. Existing records and keys stay intact. */
+/* M3.3.0 · approved Today / Week / Journey flow. Existing records and keys stay intact. */
 var FLOW_DAY=null,FLOW_HABIT=null,FLOW_HOW_RETURN=null,FLOW_NOTE_RETURN=null,FLOW_CARD_OBSERVER=null;
 function flowGroup(id){var x=HMAP[id];return x&&!x.custom&&x.g>=1&&x.g<=4?' flow-group-'+x.g:' flow-group-custom';}
 function flowIcon(id){var x=HMAP[id];return x&&x.custom?glyph('cu_'+(x.icon||'la'),GCOL[x.g]||GCOL[5]):mi(m3HabitIcon(id));}
@@ -118,7 +118,7 @@ drawHow=function(){flowDrawHow();if(!FLOW_HOW_RETURN||!OV)return;var back=$('.f2
 var FLOW_GESTURE=null,FLOW_SWIPE_UNTIL=0;
 document.addEventListener('pointerdown',function(e){var row=e.target.closest('[data-flow-swipe]');if(!row||e.button!==0||e.target.closest('.flow-card-entry,.flow-row-plus'))return;FLOW_GESTURE={id:row.dataset.flowSwipe,x:e.clientX,y:e.clientY,row:row,pointer:e.pointerId};});
 document.addEventListener('pointermove',function(e){var g=FLOW_GESTURE;if(!g||g.pointer!==e.pointerId)return;var dx=e.clientX-g.x,dy=e.clientY-g.y;if(Math.abs(dy)>16&&Math.abs(dy)>Math.abs(dx)){g.row.style.transform='';FLOW_GESTURE=null;return;}if(Math.abs(dx)>12&&Math.abs(dx)>Math.abs(dy)*1.5){g.row.style.transform='translateX('+Math.max(-76,Math.min(76,dx))+'px)';g.row.classList.toggle('swipe-yes',dx>0);g.row.classList.toggle('swipe-no',dx<0);}}, {passive:true});
-document.addEventListener('pointerup',function(e){var g=FLOW_GESTURE;FLOW_GESTURE=null;if(!g||g.pointer!==e.pointerId)return;g.row.style.transform='';g.row.classList.remove('swipe-yes','swipe-no');var dx=e.clientX-g.x,dy=e.clientY-g.y;if(Math.abs(dx)<64||Math.abs(dx)<Math.abs(dy)*1.6)return;FLOW_SWIPE_UNTIL=Date.now()+350;openNote(g.id,dk());NT.ans=dx>0?'y':'n';flowStashNote();drawNote29();});
+document.addEventListener('pointerup',function(e){var g=FLOW_GESTURE;FLOW_GESTURE=null;if(!g||g.pointer!==e.pointerId)return;g.row.style.transform='';g.row.classList.remove('swipe-yes','swipe-no');var dx=e.clientX-g.x,dy=e.clientY-g.y;if(Math.abs(dx)<64||Math.abs(dx)<Math.abs(dy)*1.6)return;FLOW_SWIPE_UNTIL=Date.now()+350;openNote(g.id,dk());NT.ans=dx>0?'y':'n';flowStashNote();drawNote29();var input=$('#ntIn');if(input){input.focus({preventScroll:true});input.setSelectionRange(input.value.length,input.value.length);}});
 document.addEventListener('pointercancel',function(){if(FLOW_GESTURE){FLOW_GESTURE.row.style.transform='';FLOW_GESTURE.row.classList.remove('swipe-yes','swipe-no');FLOW_GESTURE=null;}});
 window.addEventListener('resize',function(){requestAnimationFrame(flowFitCard);});
 if(document.fonts)document.fonts.ready.then(flowFitCard);

@@ -70,3 +70,5 @@ Không cần thay hoặc xóa bản TQ37 để thực hiện những bước nà
 Upload toàn bộ các tệp của bản mới vào **repository M3 này**, giữ nguyên link và tên vùng dữ liệu. Không trộn tệp từ các phiên bản khác nhau. Lưu bản sao trước khi cập nhật; khi app hiện thông báo có bản mới, chọn Cập nhật sau khi lưu phần đang làm.
 
 Nguồn chính thức: [tạo Pages](https://docs.github.com/en/pages/getting-started-with-github-pages/creating-a-github-pages-site), [chọn nhánh/thư mục phát hành](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site), [upload tệp và thư mục](https://docs.github.com/en/repositories/working-with-files/managing-files/adding-a-file-to-a-repository).
+
+Bản M3.3.0 có thêm `routine-growth.js` và `routine-growth.css`; hãy upload cả hai cùng các tệp còn lại. Không đổi địa chỉ app M3 đang dùng để giữ dữ liệu trên trình duyệt.

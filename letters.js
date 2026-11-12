@@ -76,7 +76,7 @@ function letterBack37(){
   TREE_REPLAY34=false;PG=2;JOURNEY_TAB31='tree';render();window.scrollTo(0,scroll);
 }
 function treeLettersSVG37(stage,stems,sx,order,interactive){
-  var slots=stage>=4?[[65,20],[162,20],[259,20],[356,20]]:stage===3?[[210,46],[63,225],[350,87]]:stage===2?[[138,80],[270,309]]:[[282,185]],branches='',tags='';
+  var slots=stage>=4?[[52,42],[192,23],[299,21],[364,76]]:stage===3?[[210,46],[63,225],[350,87]]:stage===2?[[138,80],[270,309]]:[[282,185]],branches='',tags='';
   writtenLetters37().forEach(function(r,i){var pos=slots[STAMP_MILESTONES37.indexOf(r.milestone)]||[85+i*80,310],x=pos[0],y=pos[1],st=stems.reduce(function(best,s){return Math.abs(s.x-x)<Math.abs(best.x-x)?s:best;},stems[0]),rootY=Math.min(324,Math.max(st.top+22,y+25)),rootX=sx(st,rootY),label='Đọc thư · '+STAMP_CATALOG37[r.milestone].name;
     branches+='<path d="M'+rootX.toFixed(1)+' '+rootY+'Q'+((rootX+x)/2).toFixed(1)+' '+(y-25)+' '+x+' '+(y-12)+'" fill="none" stroke="#91AA87" stroke-width="1.4" stroke-linecap="round"/>';
     tags+='<g class="tree-letter37'+(LETTER_FRESH37===r.milestone?' letter-fresh37':'')+'" style="transform-origin:'+x+'px '+(y-12)+'px;--tag-order34:'+(order+i)+'"'+(interactive?' role="button" tabindex="0" data-act="letterRead37" data-v="'+r.milestone+'" aria-label="'+esc(label)+'"':'')+'><title>'+esc(label)+'</title><rect class="letter-hit37" x="'+(x-34)+'" y="'+(y-18)+'" width="68" height="64" rx="8" fill="transparent"/><path d="M'+x+' '+(y-12)+'v12" stroke="#9B9273" stroke-width="1.2"/><g transform="translate('+(x-22)+' '+y+') rotate('+[-4,3,-3,4][i%4]+' 22 0)">'+envelopeSVG37(r.milestone).replace('<svg ','<svg width="44" height="29.33" ')+'</g></g>';

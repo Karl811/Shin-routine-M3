@@ -1,10 +1,24 @@
-# Shin routine · M3.2.0
+# Shin routine · M3.3.0
 
 Bộ phát hành độc lập, dựa trên M3 Review 04 đã duyệt: xanh Shin, Roboto Flex, Material Symbols Rounded và Material 3 Expressive tinh gọn.
 
 **Lần mở đầu dành cho học viên mới, không tự mở Demo.** Toàn bộ 20 thẻ, 5 bài học, nội dung Senpai, cây thành tựu và tem thư ở bốn mốc 1–3–6–11 được giữ nguyên.
 
-## Luồng mới M3.2.0
+## Bổ sung M3.3.0
+
+- Thẻ có nền đậm hơn theo nhóm, pattern nhẹ, viền và bóng thấp. Thẻ tự tạo có dấu bút và tên chủ thẻ trên cả hai mặt; sáu màu riêng dùng nền pastel và chữ đậm dễ đọc.
+- Hôm nay chào theo tên. Vuốt lộ nền xanh/đỏ dưới thẻ và mở ngay ô nhập của trạng thái đã chọn. Giữ nguyên dòng chờ memo, dữ liệu nháp và ghi chú bắt buộc.
+- Công thức chọn mục tiêu **1–7 ngày/tuần**, mặc định 7. Chỉ “Đã làm” được tính vào mục tiêu. Đạt mục tiêu thì các thẻ chưa ghi chuyển xuống **Rèn thêm nếu muốn**; bản nháp vẫn ở danh sách chính. Đổi mục tiêu chỉ áp dụng từ tuần hiện tại.
+- Nhật ký thói quen có lịch tháng, tổng theo tháng/từ khi bắt đầu, timeline theo tuần và màu trạng thái. Chuỗi thực hiện tính theo ngày liên tiếp thực tế; chuỗi memo tính riêng, không thay đổi cách lên cấp hoặc chuỗi check-in chung cũ.
+- Hành trình ghi nhận các mốc chuỗi ngày, memo, lần đầu vượt mục tiêu và nhịp tốt nhất hiện tại. Cây hiện lần lượt thân → cành → lá → thẻ/thư, rồi đung đưa. Khóm lớn tỏa từ gốc, bố trí ổn định, không xếp thẻ thành lưới. Giữ hiệu ứng gắn thành tựu và chế độ giảm chuyển động.
+- 20 lời nhắc ngắn của Shin dựa trên 5 bài học có sẵn. Câu hỏi nhìn lại cuối ngày cá nhân hóa và vẫn tùy chọn.
+- Hai gợi ý thử thách tùy chọn mỗi tuần, vào Thứ Ba/Thứ Sáu, hiện trong app. Có tắt/bật, để sau và bỏ qua. Cảm nhận lưu vào nhật ký thói quen liên quan; **không tự cộng XP, chuỗi hoặc mục tiêu**. Chỉ cộng một ngày nếu học viên xác nhận đã thực hiện đúng công thức hiển thị và ngày đó chưa có ghi nhận; không ghi đè memo có sẵn. Không cần đưa thẻ liên quan lên tay.
+- Nút sao Tuần cố định 44×44. Thanh điều hướng xanh nhẹ, nền 85%, blur 24px, ẩn khi cuộn xuống và hiện khi cuộn lên; ẩn khi bàn phím mở.
+- Màu khởi động PWA Android đổi sang xanh Shin, intro tự động ở các lần sau khoảng 2,1 giây. Android vẫn quản lý màn khởi động hệ thống và kích thước icon; màu cập nhật có thể cần hệ thống nạp lại manifest.
+
+Khi cập nhật M3 đang dùng, **giữ nguyên địa chỉ app** và upload toàn bộ tệp/thư mục, gồm `routine-growth.js` và `routine-growth.css`. Dữ liệu và khóa lưu cũ được giữ; bản sao mới bao gồm mục tiêu, thử thách và trải nghiệm. Bản cũ hơn không có giao diện để đọc các mục mới này.
+
+## Luồng đã có từ M3.2.0
 
 - Ba tab chính: **Hôm nay · Tuần · Hành trình**; mỗi tab có một trang.
 - Hôm nay: danh sách theo mốc “Khi…”, vuốt phải đã làm, vuốt trái chưa làm. Chạm icon **Thẻ** để xem mặt trước; chạm tên hoặc **+** để ghi nhận đầy đủ.
