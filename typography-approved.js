@@ -30,6 +30,24 @@
   if(parent&&parent.dataset.shinFontGroup&&!parent.matches('body,#app,#pv'))return parent.dataset.shinFontGroup;
   return 'size'+Math.max(8,Math.min(48,Math.round(size)));
  }
+
+ // M3.1.5: reviewed mobile deltas relative to the approved M3.1.4 sizes.
+ // One delta per text element; descendants never accumulate parent deltas.
+ function mobileDelta(el){
+  if(window.innerWidth>=768)return 0;
+  if(el.matches('input:not([type=checkbox]):not([type=radio]):not([type=range]),textarea,select'))return -2;
+  if(el.matches('#pageTitle35,.m3-card-title h2,.f2-detail-paper>h2,.m3-routine-list>[data-act=pick]'))return 2;
+  if(el.matches('.m3-page-intro>div>p:not(.m3-kicker),.m3-practice>span,.m3-practice>p,.f2-formula>small,.f2-formula>p,.m3-card-back blockquote p,.m3-card-back>p,.f2-japanese>div>p:not([lang=ja]),.f2-meaning-benefit,.f2-how-link b,.m3-tree-heading .m3-kicker,.m3-tree-panel>p,.m3-week-secondary,.m3-heading>span,#hdate'))return -2;
+  if(el.closest('.f3-setting-label')&&el.tagName==='B'&&['Âm thanh','Thêm vào màn hình chính','Hướng dẫn lần đầu'].includes(el.textContent.trim()))return -2;
+  if(el.matches('[data-notebook-tab=rep] .card>p,[data-notebook-tab=rep] .steps>li>b'))return -2;
+  if(el.matches('.chp,.tok,.opt>span')||el.closest('.chp,.tok'))return 2;
+  if(el.closest('.f2-how-content')&&!el.closest('button,input,textarea,select,.hw__k,[lang=ja],.jp')&&el.matches('.say__b,.say__b b,.hw__why,.hw__why small,.quote,.quote small,.hws b,.hws span,figcaption,.pr__q,.dd p,.jpbox small,.jpbox .vi,.oops summary,.oops li,.safe,.safe small,.out,.out b'))return -2;
+  if(el.matches('.habit-week33>summary>span,.habit-week33>summary>small,.habit-day-head33 time,.habit-day-head33 b'))return 2;
+  if(el.matches('[data-act=journeyTab31],.m3-week-row>button>span>b,.m3-week-row>button>span>small,.m3-week-surface>[data-act=week],.m3-week-legend>summary,.m3-journal-placeholder,.m3-journal-entries>[data-act=ci],.ci29-mood-options button>span,.f2-ci-memo>summary>span,.f2-ci-memo>summary>span>small,.f2-ci-mood .f2-section-heading>p,.f2-notebook .f3-tabs button>span'))return 2;
+  if(el.closest('.m3-milestones,.journey-past33'))return 2;
+  if(el.matches('.f2-checkin .record-option>span'))return 2;
+  return 0;
+ }
  function apply(){
   observer.disconnect();sheet.textContent='';
   var all=Array.from(document.body.querySelectorAll('*')).filter(function(el){return !el.closest('svg,script,style,noscript')&&!el.classList.contains('material-symbols-rounded');});
@@ -64,12 +82,17 @@
     else if(prose)size+=2;
     else if(size<=24)size=Math.min(25,size+2);
    }
+   size+=mobileDelta(m.el);
    if(size!==previous){
     var ratio=heading?1.3:Math.max(1.5,Number.isFinite(m.line)?m.line/m.size:1.5);
     line='line-height:'+Number((size*ratio).toFixed(2))+'px!important;';
    }
    m.el.dataset.shinFontId=i;
    css.push('[data-shin-font-id="'+i+'"]{font-size:'+size+'px!important;'+line+'}');
+  });
+  if(window.innerWidth<768)Array.from(document.querySelectorAll('.f2-checkin .record-option>.material-symbols-rounded')).forEach(function(el,i){
+   el.dataset.shinFontIcon=i;
+   css.push('[data-shin-font-icon="'+i+'"]{font-size:'+(parseFloat(getComputedStyle(el).fontSize)+2)+'px!important;}');
   });
   sheet.textContent=css.join('\n');observer.observe(document.body,{subtree:true,childList:true});
  }
