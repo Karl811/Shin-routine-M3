@@ -52,6 +52,28 @@
   if(el.matches('.f2-checkin .record-option>span'))return 2;
   return 0;
  }
+ // M3.1.9: requested deltas in real pixels AFTER the approved 0.85 scale.
+ function tunedMobileSize(el,size,refs){
+  if(el.matches('input:not([type=checkbox]):not([type=radio]):not([type=range]):not([type=file]),textarea,select'))return size-2;
+  if(el.matches('.f2-notebook .ver'))return size-5;
+  if(el.matches('.f3-setting-label>small,.f3-setting-header>.sndt'))return size+1;
+  if(el.matches('.f2-how-link b'))return size+1;
+  if(el.matches('.f2-ci-row-head h3,.f2-recorded-row>b,.f2-ci-keep-note>b'))return size+2;
+  if(el.matches('.m3-tree-panel>p'))return size-4;
+  if(el.matches('.m3-card-actions .m3-button,.f2-detail-footer>.m3-button,.m3-tree-heading .m3-kicker,.m3-tree-heading h2,.f3-lesson-row b,.f2-lesson .f2-how-title h2'))return size-1;
+  if(el.matches('.ckb small')&&el.textContent.trim()==='Hẹn bạn ngày mai')return size-1;
+  if(el.matches('.f2-how-content .dd .hd'))return size-2;
+  if(el.closest('.m3-week-legend')&&!el.closest('summary')&&el.matches('p,p *'))return refs.legend;
+  if(el.closest('[data-notebook-tab=rep]')){
+   if(el.matches('h3,.steps>li>b'))return refs.setting;
+   if(el.matches('.card>p,.steps>li'))return 16;
+   if(el.matches('button,a.btn'))return 13.6;
+  }
+  if(el.matches('#pageTitle35,#hdate,.m3-page-intro>div>p:not(.m3-kicker),.m3-count,.m3-count>b,.m3-today-toolbar>h2,.m3-card-top>.m3-eyebrow,.f2-paper-top>.m3-eyebrow,.m3-card-title h2,.f2-detail-paper>h2,.m3-practice>span,.m3-practice>p,.f2-formula>small,.f2-formula>p,.m3-intention>span:not(.material-symbols-rounded),.m3-progress>div>b,.m3-progress>div>b>span,[data-act=journeyTab31],.shin-tree34>p,.m3-reflection-heading>h2,.m3-tree-notes>p,.m3-week-nav>div>b,.m3-week-nav>div>small,.m3-week-secondary,.m3-week-reflect>label,.journal-date-heading31,.f2-notebook .f3-empty,.f2-owner b,.f2-owner small,.f2-owner>span,.f2-identity p,.f2-ci-intro h2,.f2-ci-intro>p,.f2-ci-row-head p'))return size-2;
+  if(el.closest('.f2-how-content')&&el.matches('.hw__k')&&/Nên và tránh|Câu tiếng Nhật dùng ngay|Lỗi hay gặp/i.test(el.textContent))return size-2;
+  return size;
+ }
+
  function apply(){
   observer.disconnect();scaleSheet.textContent='';sheet.textContent='';
   var all=Array.from(document.body.querySelectorAll('*')).filter(function(el){return !el.closest('svg,script,style,noscript')&&!el.classList.contains('material-symbols-rounded');});
@@ -103,9 +125,14 @@
    // Snapshot every text element before writing, including input and placeholder fonts.
    // Icons and SVG artwork stay at their approved sizes.
    var scaled=measured.filter(function(m){return !m.el.matches('.f2-partial');}).map(function(m){var cs=getComputedStyle(m.el);return {el:m.el,size:parseFloat(cs.fontSize),line:parseFloat(cs.lineHeight)};});
+   var refs={legend:15.3,setting:17.85};
+   scaled.forEach(function(m){if(m.el.matches('.m3-week-legend>summary'))refs.legend=m.size*mobileTextScale;if(m.el.matches('.f3-setting-label>b'))refs.setting=m.size*mobileTextScale;});
    scaleSheet.textContent=scaled.map(function(m){
-    var line=Number.isFinite(m.line)?'line-height:'+Number((m.line*mobileTextScale).toFixed(3))+'px!important;':'';
-    return '#shinTypographyRoot.m3-review.m3-release [data-shin-font-id="'+m.el.dataset.shinFontId+'"]{font-size:'+Number((m.size*mobileTextScale).toFixed(3))+'px!important;'+line+'}';
+    var original=m.size*mobileTextScale;
+    var tuned=tunedMobileSize(m.el,original,refs);
+    var tunedLine=Number.isFinite(m.line)?m.line*mobileTextScale*(tuned/original):NaN;
+    var line=Number.isFinite(tunedLine)?'line-height:'+Number(tunedLine.toFixed(3))+'px!important;':'';
+    return '#shinTypographyRoot.m3-review.m3-release [data-shin-font-id="'+m.el.dataset.shinFontId+'"]{font-size:'+Number(tuned.toFixed(3))+'px!important;'+line+'}';
    }).join('\n');
   }
   observer.observe(document.body,{subtree:true,childList:true});

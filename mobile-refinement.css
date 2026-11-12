@@ -50,3 +50,13 @@
   .m3-review .m3-week-secondary {line-height:1.45!important;}
   .m3-review .m3-week-reflect>textarea {line-height:1.45!important;}
 }
+
+/* M3.1.9: approved mobile how-to memory layout. */
+@media(max-width:767px){
+ .m3-review .f2-how-content .dd.mobile-do-dont{display:grid;grid-template-columns:minmax(0,1fr);gap:12px;background:transparent;border-radius:0;overflow:visible;}
+ .m3-review .mobile-do-dont>section{min-width:0;overflow:hidden;border-radius:16px;background:var(--surface);}
+ .m3-review .f2-how-content .dd.mobile-do-dont .yes,.m3-review .f2-how-content .dd.mobile-do-dont .no{color:var(--on-surface);}
+ .m3-review .f2-how-content .mobile-oops{padding:16px;margin-top:20px;background:var(--surface);border-radius:16px;}
+ .m3-review .f2-how-content .mobile-oops .hw__k{margin:0 0 10px;}
+ .m3-review .f2-how-content .mobile-oops ul{padding:0 0 0 20px;margin:0;}
+}
