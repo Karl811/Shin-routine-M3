@@ -1,5 +1,5 @@
-/* Shin routine · M3.3.0 · cache riêng theo địa chỉ cài app */
-const VERSION='M3.3.0';
+/* Shin routine · M3.3.1 · cache riêng theo địa chỉ cài app */
+const VERSION='M3.3.1';
 const SCOPE=self.registration.scope;
 const PREFIX='shin-m3-release:'+encodeURIComponent(SCOPE)+':';
 const CACHE=PREFIX+VERSION;

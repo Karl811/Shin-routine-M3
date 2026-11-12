@@ -1,8 +1,15 @@
-# Shin routine · M3.3.0
+# Shin routine · M3.3.1
 
 Bộ phát hành độc lập, dựa trên M3 Review 04 đã duyệt: xanh Shin, Roboto Flex, Material Symbols Rounded và Material 3 Expressive tinh gọn.
 
 **Lần mở đầu dành cho học viên mới, không tự mở Demo.** Toàn bộ 20 thẻ, 5 bài học, nội dung Senpai, cây thành tựu và tem thư ở bốn mốc 1–3–6–11 được giữ nguyên.
+
+## Điều chỉnh M3.3.1
+
+- Giảm phần xanh lá đã thêm: trạng thái đã làm, lịch tháng, nền vuốt, lời khen và ánh nền cây theo xanh lam Shin. Nhóm thẻ sức khỏe dùng xám xanh dịu hơn; màu cây tự nhiên được giữ.
+- Mặt trước dùng hai dải sóng cong cùng ngôn ngữ mặt sau; bỏ họa tiết vòng tròn đồng tâm và vệt sáng nổi khối. Chỉ giữ viền mảnh và bóng thấp.
+- **Thử thách** thu gọn mặc định, chạm tiêu đề mới hiện nội dung; bỏ icon explore. Trạng thái mở chỉ giữ trong phiên sử dụng.
+- Thanh điều hướng phẳng, bỏ bóng đổ; di chuyển khoảng 460ms, mượt và chậm hơn.
 
 ## Bổ sung M3.3.0
 
