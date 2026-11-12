@@ -3,7 +3,7 @@
    KAIZEN MỖI NGÀY · TQ02
    Một file HTML, dữ liệu lưu trong trình duyệt của từng máy.
    ========================================================= */
-var APP_VER = 'M3.1.6';
+var APP_VER = 'M3.1.7';
 var APP_NAME = 'Shin routine';
 var KEY = 'shin-m3-v1-data', KEY_DEMO = 'shin-m3-v1-demo', KEY_MODE = 'shin-m3-v1-mode';
 var DEMO_CLASS = 'DEMO-KZ';
@@ -2708,7 +2708,7 @@ function drawWeek(){
     '<div>'+(tst?hanko('t')+'<b>Con dấu thầy cô</b>'+dm(tst.d):'<b>Con dấu thầy cô</b><input class="inp" id="wkCode" placeholder="Mã thầy cô đọc" style="font-size:14px;padding:8px 10px;text-transform:uppercase"><button class="btn btn--soft btn--sm" data-act="tcode">Nhận dấu</button>')+'</div></div></div>';
   h+='<button class="btn btn--wide" style="margin-top:14px" data-act="wkImg">'+ic('down')+'Lưu ảnh thẻ tuần</button>';
   h+='<p class="note center" style="margin-top:8px">Trình thẻ này trên lớp mỗi tuần.</p>';
-  sheetSet(h);
+  sheetSet(h); OV.querySelector('.sheet').classList.add('shin-week-sheet');
 }
 function wkImage(){
   var ws=WK, w=S.week[ws], list=weekIds31(ws), W=1080, Hh=Math.max(1550,1100+list.reduce(function(sum,id){var n=0;for(var z=0;z<7;z++)if((S.notes[addD(ws,z)]||{})[id])n++;return sum+280+Math.min(n,3)*42;},0)+Math.max(0,Math.ceil((w.win||'').length/46)-2)*44);

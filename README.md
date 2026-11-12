@@ -1,4 +1,4 @@
-# Shin routine · M3.1.6
+# Shin routine · M3.1.7
 
 Bộ phát hành độc lập, dựa trên M3 Review 04 đã duyệt: xanh Shin, Roboto Flex, Material Symbols Rounded và Material 3 Expressive tinh gọn.
 
