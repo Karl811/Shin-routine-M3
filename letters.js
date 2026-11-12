@@ -68,12 +68,12 @@ function sealLetter37(){
   f.mode='sealing';drawLetter37();if(reduceMotion()){finishLetter37();return;}var overlay=OV;LETTER_TIMER37=setTimeout(function(){if(LETTER_FLOW37===f&&OV===overlay)finishLetter37();},1250);
 }
 function finishLetter37(){
-  if(!LETTER_FLOW37)return;var m=LETTER_FLOW37.milestone;closeOv(true);LETTER_FRESH37=m;TREE_REPLAY34=false;PG=1;JOURNEY_TAB31='tree';render();window.scrollTo(0,0);toast('Lá thư đã có một chỗ trên cây.');setTimeout(function(){if(LETTER_FRESH37===m)LETTER_FRESH37=null;},1800);
+  if(!LETTER_FLOW37)return;var m=LETTER_FLOW37.milestone;closeOv(true);LETTER_FRESH37=m;TREE_REPLAY34=false;PG=2;JOURNEY_TAB31='tree';render();window.scrollTo(0,0);toast('Lá thư đã có một chỗ trên cây.');setTimeout(function(){if(LETTER_FRESH37===m)LETTER_FRESH37=null;},1800);
 }
 function letterBack37(){
   var f=LETTER_FLOW37;if(!f)return;var habit=f.habit,origin=f.origin,scroll=f.scroll,sealed=f.mode==='sealing';closeOv(true);
   if(habit&&!sealed&&H(habit)){offerTier(habit);return;}if(origin==='notebook'&&!sealed){NBTAB='sum';openNb();return;}
-  TREE_REPLAY34=false;PG=1;JOURNEY_TAB31='tree';render();window.scrollTo(0,scroll);
+  TREE_REPLAY34=false;PG=2;JOURNEY_TAB31='tree';render();window.scrollTo(0,scroll);
 }
 function treeLettersSVG37(stage,stems,sx,order,interactive){
   var slots=stage>=4?[[65,20],[162,20],[259,20],[356,20]]:stage===3?[[210,46],[63,225],[350,87]]:stage===2?[[138,80],[270,309]]:[[282,185]],branches='',tags='';

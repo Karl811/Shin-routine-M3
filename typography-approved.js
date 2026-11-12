@@ -76,7 +76,7 @@
 
  function apply(){
   observer.disconnect();scaleSheet.textContent='';sheet.textContent='';
-  var all=Array.from(document.body.querySelectorAll('*')).filter(function(el){return !el.closest('svg,script,style,noscript')&&!el.classList.contains('material-symbols-rounded');});
+  var all=Array.from(document.body.querySelectorAll('*')).filter(function(el){return !el.closest('svg,script,style,noscript,[data-flow-type]')&&!el.classList.contains('material-symbols-rounded');});
   all.forEach(function(el){el.removeAttribute('data-shin-font-group');el.removeAttribute('data-shin-font-id');});
   // Measure all original sizes before applying any overrides, including inherited text.
   var measured=all.filter(function(el){return ['INPUT','TEXTAREA','SELECT'].includes(el.tagName)||Array.from(el.childNodes).some(function(c){return c.nodeType===3&&c.textContent.trim();});}).map(function(el){var cs=getComputedStyle(el);return {el:el,size:parseFloat(cs.fontSize),line:parseFloat(cs.lineHeight)};});

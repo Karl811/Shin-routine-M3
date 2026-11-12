@@ -1,8 +1,20 @@
-# Shin routine · M3.1.9
+# Shin routine · M3.2.0
 
 Bộ phát hành độc lập, dựa trên M3 Review 04 đã duyệt: xanh Shin, Roboto Flex, Material Symbols Rounded và Material 3 Expressive tinh gọn.
 
 **Lần mở đầu dành cho học viên mới, không tự mở Demo.** Toàn bộ 20 thẻ, 5 bài học, nội dung Senpai, cây thành tựu và tem thư ở bốn mốc 1–3–6–11 được giữ nguyên.
+
+## Luồng mới M3.2.0
+
+- Ba tab chính: **Hôm nay · Tuần · Hành trình**; mỗi tab có một trang.
+- Hôm nay: danh sách theo mốc “Khi…”, vuốt phải đã làm, vuốt trái chưa làm. Chạm icon **Thẻ** để xem mặt trước; chạm tên hoặc **+** để ghi nhận đầy đủ.
+- Chọn **Để sau** giữ dòng chờ memo. Bản nháp vẫn được lưu khi tải lại và có thể bổ sung trong check-in cuối ngày. Chỉ ghi nhận đã lưu đủ nội dung mới tăng tiến độ.
+- Tuần: chạm chấm ngày để đọc ghi nhận tại chỗ; chạm tên thói quen vào thẳng Nhật ký. Nút sao xem các ghi chú đáng nhớ. Memo cuối ngày vẫn nằm trong nhật ký ngày.
+- Cách làm ở đầu thẻ, hai mặt thẻ gọn riêng trong màn hình; mặt trước theo màu nhóm, mặt sau xanh Shin có gợn sóng. Mục “Trở thành…” không bắt buộc.
+- Hành trình giữ cây, hiệu ứng, thành tựu, tem và thư; thanh điều hướng nổi có ba tên tab.
+- Đặt ưu tiên màn hình dọc. Khả năng khóa hướng khi mở trên trình duyệt phụ thuộc thiết bị; cần thử trên điện thoại thật sau khi cập nhật.
+
+**Nếu đang cập nhật một app M3 đã dùng:** giữ nguyên repository, địa chỉ web và các khóa dữ liệu. Upload toàn bộ nội dung bản mới, gồm hai tệp `routine-flow.js` và `routine-flow.css`; không chỉ thay `index.html`. Chọn **Cập nhật** khi app thông báo có bản mới. Luồng chuyển từ TQ37 bên dưới chỉ dành cho người chuyển sang M3 lần đầu.
 
 ## Đưa lên GitHub
 
@@ -35,7 +47,7 @@ Hoặc mở terminal trong thư mục này, chạy `node preview.cjs`; dừng b�
 
 ## Thành phần trong gói
 
-`index.html`, `app.js`, `letters.js`, các tệp `m3-*.js/css`, `boot.js`, `release.css`, `sw.js`, manifest, hai icon, toàn bộ `assets/fonts/` và giấy phép font. Các tệp `preview.cjs`, `Xem-thu.cmd` chỉ hỗ trợ xem tại máy. Hướng dẫn đi cùng gói; không có báo cáo/ảnh thử hay bản sao dữ liệu học viên.
+`index.html`, `app.js`, `letters.js`, `routine-flow.js/css`, các tệp `m3-*.js/css`, `boot.js`, `release.css`, `sw.js`, manifest, hai icon, toàn bộ `assets/fonts/` và giấy phép font. Các tệp `preview.cjs`, `Xem-thu.cmd` chỉ hỗ trợ xem tại máy. Hướng dẫn đi cùng gói; không có báo cáo/ảnh thử hay bản sao dữ liệu học viên.
 
 `app.js` tiếp tục dùng các quy tắc rèn luyện từ TQ37; khác bản Review ở số phiên bản và tên vùng lưu. `boot.js` bỏ tự kích hoạt Demo; giao diện phát hành không có nhãn bản duyệt. `release-compat.js` giữ đúng trạng thái Đang duy trì trong bản sao TQ37/M3 có dấu phiên bản dữ liệu cũ và chuẩn hóa dấu phiên bản khi giáo viên chủ động mở Demo. TQ37 và thư mục M3 Review 04 gốc được giữ nguyên.
 

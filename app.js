@@ -3,7 +3,7 @@
    KAIZEN MỖI NGÀY · TQ02
    Một file HTML, dữ liệu lưu trong trình duyệt của từng máy.
    ========================================================= */
-var APP_VER = 'M3.1.9';
+var APP_VER = 'M3.2.0';
 var APP_NAME = 'Shin routine';
 var KEY = 'shin-m3-v1-data', KEY_DEMO = 'shin-m3-v1-demo', KEY_MODE = 'shin-m3-v1-mode';
 var DEMO_CLASS = 'DEMO-KZ';
@@ -1068,7 +1068,7 @@ var SAVE_STATE32='idle',SAVE_WARNING32=false,LOAD_ISSUE32=null,RAW_RECOVERY32=''
 var SW_REG32=null,SW_READY32=false,SW_ERROR32='',SW_WAITING32=null,SW_DISMISSED32=false,UPDATE_APPLY32=false,SW_STARTED32=false;
 function defState(){
   return {v:3, ver:APP_VER, name:'', cls:'', teacher:null, created:dk(), sound:true, ciTime:'21:00', ciCal:false, calAsked:0,
-    habits:{}, order:[], custom:{}, cseq:0, les:{}, howSeen:{}, slots:[null,null,null,null,null], notes:{}, bf:{}, mood:{}, prDone:{}, seen:{}, storeView:'list', homeView:'cards', compactUI33:true, ciDrafts:{}, journalStars:{}, stampLetters:{}, log:{}, ev:{}, why:{}, ci:{}, xp:0, ins:0, tstamps:[], week:{}, opens:{}, saved:0, learnedXP:{}, bu:{}};
+    habits:{}, order:[], custom:{}, cseq:0, les:{}, howSeen:{}, slots:[null,null,null,null,null], notes:{}, bf:{}, mood:{}, prDone:{}, seen:{}, storeView:'list', homeView:'cards', compactUI33:true, recordDrafts:{}, ciDrafts:{}, journalStars:{}, stampLetters:{}, log:{}, ev:{}, why:{}, ci:{}, xp:0, ins:0, tstamps:[], week:{}, opens:{}, saved:0, learnedXP:{}, bu:{}};
 }
 function migrate(st){
   /* Dữ liệu từ TQ01–TQ02: thêm cấp thẻ, giữ nguyên nhật ký */
@@ -1082,7 +1082,7 @@ function migrate(st){
   if(!st.howSeen){ st.howSeen={}; for(var hk in st.habits) st.howSeen[hk]=1; }
   if(st.guideOff===undefined) st.guideOff = Object.keys(st.ci||{}).length>0;
   if(!st.compactUI33){st.homeView='cards';st.compactUI33=true;}else st.homeView=st.homeView==='list'?'list':'cards'; st.ciDrafts=st.ciDrafts||{};st.journalStars=st.journalStars||{};
-  st.stampLetters=st.stampLetters||{};
+  st.stampLetters=st.stampLetters||{};st.recordDrafts=st.recordDrafts||{};
   st.v=5; return st;
 }
 function stateObject32(v){return !!v&&typeof v==='object'&&!Array.isArray(v);}
@@ -1090,7 +1090,7 @@ function validDate32(d){if(typeof d!=='string'||!/^\d{4}-\d{2}-\d{2}$/.test(d))r
 function validateState32(d){
   if(!stateObject32(d)||typeof d.name!=='string'||!stateObject32(d.habits)||!stateObject32(d.log)||!Array.isArray(d.order))throw Error('Tập tin không có dữ liệu Shin routine hợp lệ.');
   function walk(o,depth){if(depth>30)throw Error('Cấu trúc tập tin quá phức tạp.');if(o&&typeof o==='object')Object.keys(o).forEach(function(k){if(k==='__proto__'||k==='prototype'||k==='constructor')throw Error('Cấu trúc tập tin không hợp lệ.');walk(o[k],depth+1);});}walk(d,0);
-  var maps=['custom','notes','why','bf','ci','week','treeCards','journalStars','ciDrafts','stampLetters','mood','ev','les','opens','seen','learnedXP','bu'];maps.forEach(function(k){if(d[k]!==undefined&&!stateObject32(d[k]))throw Error('Mục '+k+' trong tập tin không hợp lệ.');});
+  var maps=['custom','notes','why','bf','ci','week','treeCards','journalStars','ciDrafts','recordDrafts','stampLetters','mood','ev','les','opens','seen','learnedXP','bu'];maps.forEach(function(k){if(d[k]!==undefined&&!stateObject32(d[k]))throw Error('Mục '+k+' trong tập tin không hợp lệ.');});
   if(!validDate32(d.created))throw Error('Ngày bắt đầu trong bản sao không hợp lệ.');
   if(d.order.some(function(id){return typeof id!=='string';}))throw Error('Danh sách thẻ không hợp lệ.');
   Object.keys(d.habits).forEach(function(id){var u=d.habits[id];if(!stateObject32(u)||!validDate32(u.since))throw Error('Dữ liệu thói quen không hợp lệ.');if(u.lv!==undefined&&(!Number.isInteger(u.lv)||u.lv<1||u.lv>3))throw Error('Cấp thẻ không hợp lệ.');['anchor','act','who'].forEach(function(k){if(u[k]!==undefined&&typeof u[k]!=='string')throw Error('Nội dung thẻ không hợp lệ.');});});
@@ -1107,6 +1107,7 @@ function validateState32(d){
   Object.keys(d.week||{}).forEach(function(day){var c=d.week[day];if(!validDate32(day)||!stateObject32(c)||(c.win!==undefined&&typeof c.win!=='string')||(c.buddy!==undefined&&typeof c.buddy!=='string'))throw Error('Thẻ tuần trong bản sao không hợp lệ.');});
   Object.keys(d.treeCards||{}).forEach(function(id){var a=d.treeCards[id];if(!safeId(id)||!stateObject32(a)||typeof a.name!=='string'||[2,3].indexOf(a.lv)<0||!validDate32(a.date)||typeof a.color!=='string'||!/^#[0-9a-fA-F]{6}$/.test(a.color))throw Error('Thẻ thành tựu trong bản sao không hợp lệ.');['reflection','note','anchor','act','fullName'].forEach(function(k){if(a[k]!==undefined&&typeof a[k]!=='string')throw Error('Nội dung thành tựu không hợp lệ.');});});
   Object.keys(d.ciDrafts||{}).forEach(function(day){var a=d.ciDrafts[day];if(!validDate32(day)||!stateObject32(a)||(a.note!==undefined&&typeof a.note!=='string'))throw Error('Bản nháp check-in không hợp lệ.');if(a.notes!==undefined&&!stateObject32(a.notes))throw Error('Ghi chú bản nháp không hợp lệ.');Object.keys(a.notes||{}).forEach(function(id){if(typeof a.notes[id]!=='string')throw Error('Nội dung bản nháp không hợp lệ.');});});
+  Object.keys(d.recordDrafts||{}).forEach(function(day){var drafts=d.recordDrafts[day];if(!validDate32(day)||!stateObject32(drafts))throw Error('Ngày của ghi nhận đang viết không hợp lệ.');Object.keys(drafts).forEach(function(id){var a=drafts[id];if(!safeId(id)||!d.habits[id]||!stateObject32(a)||['y','p','n','x'].indexOf(a.ans)<0||typeof a.text!=='string'||typeof a.why!=='string')throw Error('Ghi nhận đang viết không hợp lệ.');});});
   validateStampLetters37(d.stampLetters||{});
   return d;
 }
@@ -1204,7 +1205,7 @@ function bigStamp(kind){ var o=document.createElement('div'); o.className='stamp
    Cả trang cuộn theo tài liệu để thanh trình duyệt tự ẩn khi lướt.
    ========================================================= */
 var TAB='today', NBTAB='sum', PG=0, NBOPEN=false, JDAY=null;
-var PAGES=[['deck','Hôm nay'],['prog','Hành trình'],['nb','Nhật ký']];
+var PAGES=[['deck','Hôm nay'],['week','Tuần'],['prog','Hành trình']];
 function shellHTML(){
   return '<header class="ahd" id="ahd"><div class="ahd__in"><div class="header-heading35"><div class="header-title-line35"><h1 id="pageTitle35">Hôm nay</h1><span id="headerAction35"></span></div><span class="hdate" id="hdate"></span></div><button class="save-status32" id="saveStatus32" data-act="storageHelp32" aria-label="Bài làm trên máy"></button><button class="hstreak" id="hpts" data-act="streak"></button>'+
     '<button class="gear" id="gear" aria-label="Sổ tay">'+ic('dots')+'<i class="dot" id="gdot" hidden></i></button></div></header>'+
@@ -1359,7 +1360,7 @@ function openFirstForm32(id){
 function firstStart32(){
   var id=FIRST_HABIT32,x=HMAP[id];if(!x)return;var anchor=$('#firstAnchor32').value.trim(),act=$('#firstAct32').value.trim();if(anchor.length<2){$('#firstAnchor32').focus();return;}if(act.length<2){$('#firstAct32').focus();return;}
   if(H(id)){closeOv();openCard(id);return;}if(S.slots.indexOf(null)<0){toast('Bạn đã đủ 5 thẻ trên tay.');return;}
-  S.habits[id]={status:'active',since:dk(),lv:1,lvSince:dk(),anchor:anchor,act:act,who:WHO_GEN[0],bad:'',badOther:'',quiz:'later'};if(S.order.indexOf(id)<0)S.order.push(id);placeInSlot(id);if(!S.learnedXP[id]){S.xp+=15;S.learnedXP[id]=1;}S.guideOff=false;S.guideDone=0;S.onboarded32=true;save(true);FIRST_HABIT32=null;closeOv();PG=0;render();window.scrollTo(0,0);toast('Thẻ đã sẵn sàng. Làm việc nhỏ ngoài đời, rồi chạm Đóng dấu nhé.');
+  S.habits[id]={status:'active',since:dk(),lv:1,lvSince:dk(),anchor:anchor,act:act,who:'',bad:'',badOther:'',quiz:'later'};if(S.order.indexOf(id)<0)S.order.push(id);placeInSlot(id);if(!S.learnedXP[id]){S.xp+=15;S.learnedXP[id]=1;}S.guideOff=false;S.guideDone=0;S.onboarded32=true;save(true);FIRST_HABIT32=null;closeOv();PG=0;render();window.scrollTo(0,0);toast('Thẻ đã sẵn sàng để rèn.');
 }
 
 /* =========================================================
@@ -1480,7 +1481,7 @@ function cuDelete(id){
   if(!confirm('Xóa thẻ “'+nm+'” cùng toàn bộ con dấu của thẻ này? Việc này không hoàn tác được.')) return;
   var i=S.slots.indexOf(id); if(i>=0) S.slots[i]=null;
   delete S.habits[id]; delete S.custom[id]; S.order=S.order.filter(function(x){ return x!==id; });
-  ['log','notes','why','bf','ev'].forEach(function(m){ for(var d in S[m]){ if(S[m][d] && S[m][d][id]!==undefined) delete S[m][d][id]; } });
+  ['log','notes','why','bf','ev','recordDrafts'].forEach(function(m){ for(var d in S[m]){ if(S[m][d] && S[m][d][id]!==undefined) delete S[m][d][id]; } });
   for(var w in S.week){ if(S.week[w] && S.week[w].rate) delete S.week[w].rate[id]; }
   delete S.seen[id]; delete S.learnedXP[id]; delete HMAP[id];
   save(true); closeOv(true); ST=null; SLOT=0; SBACK=false; render(); toast('Đã xóa thẻ.');
@@ -2053,12 +2054,11 @@ function stState(){
   if(k==='quiz' && ST.pick!==x.quiz.ok) return {ok:false,msg:'Chọn đáp án đúng để tiếp tục'};
   if(k==='k' && !ST.anchor.trim()) return {ok:false,msg:'Chọn lúc làm'};
   if(k==='a' && !String(ST.act).trim()) return {ok:false,msg:'Chọn việc sẽ làm'};
-  if(k==='w' && !ST.who.trim()) return {ok:false,msg:'Chọn người bạn muốn trở thành'};
   return {ok:true};
 }
 function sentence(cur){
   function u(v,key,ph){ return '<u class="'+(cur===key?'cur':v?'fill':'')+'">'+esc(v||ph)+'</u>'; }
-  return '<div class="sentence">Khi '+u(ST.anchor,'k','lúc nào')+', tôi sẽ '+u(ST.act,'a','làm gì')+' để trở thành '+u(ST.who,'w','người như thế nào')+'.</div>';
+  return '<div class="sentence">Khi '+u(ST.anchor,'k','lúc nào')+', tôi sẽ '+u(ST.act,'a','làm gì')+(ST.who?' để trở thành '+u(ST.who,'w','người như thế nào'):'')+'.</div>';
 }
 function chipsFor(list,val,key,ph){
   var custom=ST.custom[key] || (val && list.indexOf(val)<0);
@@ -2093,11 +2093,11 @@ function drawStart(){
     body=(ST.edit?'<div class="ey">Đổi công thức</div>':'<div class="ey">Công thức của bạn</div>')+sentence(k)+(k==='k'?sugBox():'');
     if(k==='k') body+='<div class="qlab">Bạn sẽ làm vào lúc nào?</div>'+chipsFor(x.anchors||[],ST.anchor,'k','khi bước vào phòng');
     if(k==='a'){ var acts=[x.act]; if(x.pickBad){ BAD_OPTS.forEach(function(b){ if(b[0]===ST.bad&&b[2]) acts=[b[2]]; }); } body+='<div class="qlab">Việc nhỏ bạn sẽ làm?</div>'+(x.custom?'<input class="inp" id="stIn" data-in="st-a" maxlength="50" placeholder="Ví dụ: uống một ly nước" value="'+esc(ST.act)+'"><div class="tiny muted" id="stCnt" style="text-align:right">'+String(ST.act||'').length+'/50</div><p class="note">Chọn một việc thật nhỏ, làm trong 1–2 phút.</p>':chipsFor(acts,ST.act,'a','một việc thật nhỏ')); }
-    if(k==='w') body+='<div class="qlab">Bạn muốn trở thành người như thế nào?</div>'+chipsFor(x.who.concat(WHO_GEN),ST.who,'w','người đáng tin cậy');
+    if(k==='w') body+='<div class="qlab">Bạn muốn trở thành người như thế nào? <small>· Không bắt buộc</small></div>'+chipsFor(x.who.concat(WHO_GEN),ST.who,'w','người đáng tin cậy')+'<button class="chp" data-act="flowWhoNone">Bỏ qua</button>';
   }
   if(ST.edit && ST.i===0 && H(ST.id) && S.slots.indexOf(ST.id)>=0) body+='<div class="pzrow"><button class="btn btn--ghost btn--sm" data-act="stPause" data-v="'+ST.id+'">'+ic('pause')+'Tạm dừng thẻ này</button><span class="note">Thẻ cất vào Thư viện, tiến độ vẫn giữ.</span></div>';
   var s=stState(), last=ST.i===ST.steps.length-1;
-  var label=last?(ST.edit?'Lưu':'Rút thẻ'):'Tiếp tục';
+  var label=last?(ST.edit?'Lưu':k==='w'&&!ST.who.trim()?'Bỏ qua · Rút thẻ':'Rút thẻ'):'Tiếp tục';
   sheetSet(head+'<div class="lc">'+body+'</div><div class="sbar"><span class="st '+(s.ok?'okk':'miss')+'">'+(s.ok?'✓ Sẵn sàng':esc(s.msg))+'</span><button class="btn'+(s.ok?' invite':'')+'" data-act="stNext"'+(s.ok?'':' disabled')+'>'+label+'</button></div>');
 }
 function stRefresh(){ var s=stState(), st=$('.sheet .sbar .st'), b=$('.sheet .sbar .btn'); if(!st||!b) return; st.textContent=s.ok?'✓ Sẵn sàng':s.msg; st.className='st '+(s.ok?'okk':'miss'); b.disabled=!s.ok; var se=$('.sheet .sentence'); if(se) se.outerHTML=sentence(ST.steps[ST.i]); }
@@ -2471,7 +2471,7 @@ function ciFinish(){
 }
 function ciSummary(){
   var ids=CI.all.concat(CI.keeps.filter(function(id){return !!mark(CI.date,id);})),counts={y:0,p:0,n:0,x:0,unlogged:0};ids.forEach(function(id){var m=mark(CI.date,id);counts[m||'unlogged']++;});
-  return '<div class="ci29-summary"><div class="ci29-summary-shin">'+shin('proud')+'</div><h2>'+esc(CI.date===dk()?'Đã lưu hôm nay.':'Đã lưu ngày '+dm(CI.date)+'.')+'</h2><p>Một lần nhìn lại, một bước hiểu mình hơn.</p><div class="ci29-summary-stats"><div><b>'+counts.y+'</b><span>Đã làm</span></div><div><b>'+counts.p+'</b><span>Một phần</span></div><div><b>'+counts.unlogged+'</b><span>Để sau</span></div></div>'+(counts.n||counts.x?'<p class="ci29-summary-other">'+(counts.n?counts.n+' chưa làm':'')+(counts.n&&counts.x?' · ':'')+(counts.x?counts.x+' không gặp dịp':'')+'</p>':'')+'<p class="ci29-summary-message">'+(counts.unlogged?'Các thẻ để sau vẫn chưa có dấu. Bạn có thể ghi nhận khi sẵn sàng.':counts.n?'Ngày nào cũng có lúc chưa trọn vẹn. Mai mình thử một việc nhỏ vừa sức.':'Bạn có thể xem lại các ghi nhận trong Nhật ký.')+'</p></div>';
+  return '<div class="ci29-summary"><div class="ci29-summary-shin">'+shin('proud')+'</div><h2>'+esc(CI.date===dk()?'Đã lưu hôm nay.':'Đã lưu ngày '+dm(CI.date)+'.')+'</h2><p>Một lần nhìn lại, một bước hiểu mình hơn.</p><div class="ci29-summary-stats"><div><b>'+counts.y+'</b><span>Đã làm</span></div><div><b>'+counts.p+'</b><span>Một phần</span></div><div><b>'+counts.unlogged+'</b><span>Để sau</span></div></div>'+(counts.n||counts.x?'<p class="ci29-summary-other">'+(counts.n?counts.n+' chưa làm':'')+(counts.n&&counts.x?' · ':'')+(counts.x?counts.x+' không gặp dịp':'')+'</p>':'')+'<p class="ci29-summary-message">'+(counts.unlogged?'Các thẻ để sau vẫn chưa có dấu. Bạn có thể ghi nhận khi sẵn sàng.':counts.n?'Ngày nào cũng có lúc chưa trọn vẹn. Mai mình thử một việc nhỏ vừa sức.':'Bạn có thể xem lại các ghi nhận trong tab Tuần.')+'</p></div>';
 }
 function drawMood(){drawCI();}
 function moodFace(v,col){
@@ -3149,7 +3149,7 @@ function openTreeCard30(id){
   syncTree();var a=S.treeCards[id];if(!a)return;TREE_ORIGIN31=NBOPEN?'notebook':'journey';TREE_SCROLL31=window.scrollY;TREE_COLLECTION31=!!($('.tree-collection30')&&$('.tree-collection30').open);
   openOv('<div class="sh__h"><b>Thẻ thành tựu</b><button class="x" data-act="treeBack30" aria-label="Về cây thành tựu">'+ic('x')+'</button></div><div class="tree-detail30"><div class="tree-detail-icon30" style="background:'+a.color+'">'+glyph(a.icon||id,a.color)+'</div><p class="tree-detail-eyebrow30">MỘT CHẶNG KIÊN TRÌ</p><h2>'+esc(a.fullName||a.name)+'</h2><span class="tree-detail-level30">Cấp '+a.lv+(a.mastered?' · Thành nếp':a.lv>=3?' · Vững tay':' · Làm quen')+'</span><dl><div><dt>Được treo lên cây</dt><dd>'+treeDate30(a.date)+'</dd></div>'+(a.level3date?'<div><dt>Đạt cấp 3</dt><dd>'+treeDate30(a.level3date)+'</dd></div>':'')+'</dl>'+(a.act?'<div class="tree-memory-action30"><small>VIỆC NHỎ ĐÃ BẮT ĐẦU</small>'+(a.anchor?'<p>Khi '+esc(a.anchor)+'</p>':'')+'<b>'+esc(a.act)+'</b></div>':'')+(a.note?'<blockquote><small>MỘT GHI CHÚ CỦA BẠN</small><p>“'+esc(a.note)+'”</p></blockquote>':'')+'<details class="tree-reflection30"'+(a.reflection?' open':'')+'><summary>Một điều bạn muốn ghi nhớ</summary><label class="sr" for="treeReflection30">Kỷ niệm về thành tựu này</label><textarea class="inp" id="treeReflection30" maxlength="240" rows="3" placeholder="Ví dụ: Lúc đầu mình rất ngại, giờ đã tự tin hơn.">'+esc(a.reflection||'')+'</textarea><button class="btn btn--soft btn--sm" data-act="treeReflection30" data-v="'+esc(id)+'">Lưu kỷ niệm</button></details><p class="tree-detail-note30">Thẻ vẫn ở trên cây khi bạn cất khỏi tay.</p></div><div class="sbar"><button class="btn btn--wide" data-act="treeBack30">Về cây thành tựu</button></div>',true);TREE_DETAIL30=id;
 }
-function treeBack30(){TREE_DETAIL30=null;if(TREE_ORIGIN31==='journey'){closeOv();PG=1;render();var collection=$('.tree-collection30');if(collection)collection.open=TREE_COLLECTION31;window.scrollTo(0,TREE_SCROLL31);}else{NBTAB='sum';openNb();}}
+function treeBack30(){TREE_DETAIL30=null;if(TREE_ORIGIN31==='journey'){closeOv();PG=2;render();var collection=$('.tree-collection30');if(collection)collection.open=TREE_COLLECTION31;window.scrollTo(0,TREE_SCROLL31);}else{NBTAB='sum';openNb();}}
 function showTreeAward(id,stamp){
   syncTree();var a=S.treeCards[id],n=treeItems30().length,stage=treeStage30(n);
   var gift=stamp&&S.stampLetters[stamp]&&!S.stampLetters[stamp].letter;
