@@ -23,6 +23,10 @@
  for(var n=8;n<=48;n++)groups.push({id:'size'+n,base:n,selector:''});
  var byId={};groups.forEach(function(g){byId[g.id]=g;});
  var sheet=document.createElement('style');sheet.id='shin-approved-font-sizes';document.head.appendChild(sheet);
+ // M3.1.8: scale final mobile text once, after all previously approved rules.
+ // Clear this sheet before every measurement to prevent cumulative scaling.
+ var mobileTextScale=0.85;
+ var scaleSheet=document.createElement('style');scaleSheet.id='shin-mobile-text-scale';scaleSheet.media='screen and (max-width:767px)';document.head.appendChild(scaleSheet);
  var pending=false,observer=new MutationObserver(queue);
  function classify(el,size){
   for(var i=0;i<groups.length;i++)if(groups[i].selector&&el.matches(groups[i].selector))return groups[i].id;
@@ -49,7 +53,7 @@
   return 0;
  }
  function apply(){
-  observer.disconnect();sheet.textContent='';
+  observer.disconnect();scaleSheet.textContent='';sheet.textContent='';
   var all=Array.from(document.body.querySelectorAll('*')).filter(function(el){return !el.closest('svg,script,style,noscript')&&!el.classList.contains('material-symbols-rounded');});
   all.forEach(function(el){el.removeAttribute('data-shin-font-group');el.removeAttribute('data-shin-font-id');});
   // Measure all original sizes before applying any overrides, including inherited text.
@@ -94,7 +98,17 @@
    el.dataset.shinFontIcon=i;
    css.push('[data-shin-font-icon="'+i+'"]{font-size:'+(parseFloat(getComputedStyle(el).fontSize)+2)+'px!important;}');
   });
-  sheet.textContent=css.join('\n');observer.observe(document.body,{subtree:true,childList:true});
+  sheet.textContent=css.join('\n');
+  if(window.innerWidth<768){
+   // Snapshot every text element before writing, including input and placeholder fonts.
+   // Icons and SVG artwork stay at their approved sizes.
+   var scaled=measured.filter(function(m){return !m.el.matches('.f2-partial');}).map(function(m){var cs=getComputedStyle(m.el);return {el:m.el,size:parseFloat(cs.fontSize),line:parseFloat(cs.lineHeight)};});
+   scaleSheet.textContent=scaled.map(function(m){
+    var line=Number.isFinite(m.line)?'line-height:'+Number((m.line*mobileTextScale).toFixed(3))+'px!important;':'';
+    return '#shinTypographyRoot.m3-review.m3-release [data-shin-font-id="'+m.el.dataset.shinFontId+'"]{font-size:'+Number((m.size*mobileTextScale).toFixed(3))+'px!important;'+line+'}';
+   }).join('\n');
+  }
+  observer.observe(document.body,{subtree:true,childList:true});
  }
  function queue(){if(pending)return;pending=true;requestAnimationFrame(function(){pending=false;apply();});}
  window.addEventListener('resize',queue);
