@@ -1,5 +1,5 @@
 /* Shin M3 release UI, derived from approved Review 04. */
-FONT_SVG="font-family:'Google Sans Flex',system-ui,sans-serif";
+FONT_SVG="font-family:'Roboto Flex',system-ui,sans-serif";
 function mi(name){return '<span class="material-symbols-rounded" aria-hidden="true">'+name+'</span>';}
 function m3Button(act,value,label,icon,cls){return '<button class="m3-button '+(cls||'')+'" data-act="'+act+'"'+(value!==null?' data-v="'+esc(String(value))+'"':'')+'>'+ (icon?mi(icon):'')+label+'</button>';}
 function m3HabitIcon(id){return {chao:'waving_hand','5s':'inventory_2',memo:'edit_note',som:'calendar_month',u1:'style'}[id]||'style';}

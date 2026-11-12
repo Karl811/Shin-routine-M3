@@ -3,7 +3,7 @@
    KAIZEN MỖI NGÀY · TQ02
    Một file HTML, dữ liệu lưu trong trình duyệt của từng máy.
    ========================================================= */
-var APP_VER = 'M3.1.5';
+var APP_VER = 'M3.1.6';
 var APP_NAME = 'Shin routine';
 var KEY = 'shin-m3-v1-data', KEY_DEMO = 'shin-m3-v1-demo', KEY_MODE = 'shin-m3-v1-mode';
 var DEMO_CLASS = 'DEMO-KZ';
@@ -513,7 +513,7 @@ var T_PIN = '2468', T_SALT = 'kaizen-jpc';
 /* =========================================================
    HÌNH VẼ · nhân vật hư cấu, vẽ gốc bằng SVG
    ========================================================= */
-var FONT_SVG = "font-family:'Google Sans Flex',system-ui,sans-serif";
+var FONT_SVG = "font-family:'Roboto Flex',system-ui,sans-serif";
 var FONT_JP = "font-family:'Noto Sans JP','Hiragino Sans','Yu Gothic',sans-serif";
 
 /* ---- Biểu tượng giao diện (nét đậm) và điều hướng (khối phẳng) ---- */
@@ -759,10 +759,10 @@ function virus(kind, mood){
     prop='<ellipse cx="38" cy="78" rx="9" ry="7" fill="'+B+'" stroke="'+K+'" stroke-width="2.2"/><ellipse cx="82" cy="78" rx="9" ry="7" fill="'+B+'" stroke="'+K+'" stroke-width="2.2"/>';
   } else if(kind==='quen'){
     face='<path d="M43 56a5 5 0 1 1 6 4M67 56a5 5 0 1 1 6 4" stroke="'+K+'" stroke-width="2.6" fill="none" stroke-linecap="round"/><ellipse cx="60" cy="72" rx="4" ry="3.5" fill="'+K+'"/>';
-    prop='<g transform="translate(86 6)"><circle r="13" cx="13" cy="13" fill="#fff" stroke="'+K+'" stroke-width="2"/><text x="13" y="19" text-anchor="middle" style="font-family:\'Google Sans Flex\',sans-serif;font-weight:800" font-size="17" fill="#3A7FC4">?</text></g>';
+    prop='<g transform="translate(86 6)"><circle r="13" cx="13" cy="13" fill="#fff" stroke="'+K+'" stroke-width="2"/><text x="13" y="19" text-anchor="middle" style="font-family:\'Roboto Flex\',sans-serif;font-weight:800" font-size="17" fill="#3A7FC4">?</text></g>';
   } else {
     face='<g class="blink"><circle cx="48" cy="56" r="4.4" fill="'+K+'"/><circle cx="72" cy="56" r="4.4" fill="'+K+'"/></g><path d="M50 70q10 8 20 0" stroke="'+K+'" stroke-width="2.6" fill="none" stroke-linecap="round"/>';
-    prop='<g transform="translate(78 70) rotate(12)"><rect width="30" height="32" rx="4" fill="#fff" stroke="'+K+'" stroke-width="2"/><rect width="30" height="9" rx="3" fill="#E8604F"/><text x="15" y="26" text-anchor="middle" style="font-family:\'Google Sans Flex\',sans-serif;font-weight:800" font-size="10" fill="'+K+'">mai</text></g>';
+    prop='<g transform="translate(78 70) rotate(12)"><rect width="30" height="32" rx="4" fill="#fff" stroke="'+K+'" stroke-width="2"/><rect width="30" height="9" rx="3" fill="#E8604F"/><text x="15" y="26" text-anchor="middle" style="font-family:\'Roboto Flex\',sans-serif;font-weight:800" font-size="10" fill="'+K+'">mai</text></g>';
   }
   return '<svg viewBox="0 0 120 124" aria-hidden="true"><g class="bob">'+bumps+
     '<ellipse cx="60" cy="62" rx="33" ry="30" fill="'+B+'" stroke="'+K+'" stroke-width="2.4"/>'+face+prop+'</g></svg>';
@@ -2713,7 +2713,7 @@ function drawWeek(){
 function wkImage(){
   var ws=WK, w=S.week[ws], list=weekIds31(ws), W=1080, Hh=Math.max(1550,1100+list.reduce(function(sum,id){var n=0;for(var z=0;z<7;z++)if((S.notes[addD(ws,z)]||{})[id])n++;return sum+280+Math.min(n,3)*42;},0)+Math.max(0,Math.ceil((w.win||'').length/46)-2)*44);
   var cv=document.createElement('canvas'); cv.width=W; cv.height=Hh; var x=cv.getContext('2d');
-  var F='"Google Sans Flex",system-ui,sans-serif', J='"Noto Sans JP","Hiragino Sans",sans-serif';
+  var F='"Roboto Flex",system-ui,sans-serif', J='"Noto Sans JP","Hiragino Sans",sans-serif';
   x.fillStyle='#FBF7EC'; x.fillRect(0,0,W,Hh);
   x.fillStyle='rgba(150,120,60,.07)'; for(var i=0;i<W;i+=18){ for(var j=0;j<Hh;j+=18){ x.fillRect(i,j,3,3); } }
   x.fillStyle='#136F7E'; x.fillRect(0,0,W,16);
@@ -3161,7 +3161,7 @@ async function treeImage30(){
   if(TREE_EXPORTING30)return;TREE_EXPORTING30=true;
   try{
     syncTree();var list=treeItems30(),n=list.length,cv=document.createElement('canvas');cv.width=1080;cv.height=1440;var ctx=cv.getContext('2d'),bg=ctx.createLinearGradient(0,0,0,1440);bg.addColorStop(0,'#E3E7ED');bg.addColorStop(1,'#F2F1EE');ctx.fillStyle=bg;ctx.fillRect(0,0,1080,1440);
-    ctx.fillStyle='#F7FAF2';rr(ctx,56,56,968,1328,44);ctx.fill();var font='"Google Sans Flex",system-ui,sans-serif';ctx.textAlign='left';ctx.fillStyle='#52565C';ctx.font='600 22px '+font;ctx.fillText('SHIN ROUTINE · TỪNG NGÀY MỘT CHÚT',105,122);
+    ctx.fillStyle='#F7FAF2';rr(ctx,56,56,968,1328,44);ctx.fill();var font='"Roboto Flex",system-ui,sans-serif';ctx.textAlign='left';ctx.fillStyle='#52565C';ctx.font='600 22px '+font;ctx.fillText('SHIN ROUTINE · TỪNG NGÀY MỘT CHÚT',105,122);
     ctx.fillStyle='#1A1A1A';ctx.font='600 50px '+font;ctx.fillText('Cây thành tựu',105,197);ctx.font='400 28px '+font;ctx.fillText(short(S.name||'Hành trình của tôi',40),105,245);
     var source=treeSVG(null,false),img=new Image();await new Promise(function(resolve,reject){img.onload=resolve;img.onerror=reject;img.src='data:image/svg+xml;charset=utf-8,'+encodeURIComponent(source);});ctx.drawImage(img,100,280,880,817);
     ctx.textAlign='center';ctx.fillStyle='#1A1A1A';ctx.font='600 38px '+font;ctx.fillText(n+' thẻ đã treo · '+TREE_STAGES30[treeStage30(n)].name,540,1128);ctx.font='400 26px '+font;ctx.fillStyle='#52565C';ctx.fillText('Từng việc nhỏ, một chặng kiên trì.',540,1180);

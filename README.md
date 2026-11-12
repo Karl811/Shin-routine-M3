@@ -1,6 +1,6 @@
-# Shin routine · M3.1.0
+# Shin routine · M3.1.6
 
-Bộ phát hành độc lập, dựa trên M3 Review 04 đã duyệt: xanh Shin, Google Sans Flex, Material Symbols Rounded và Material 3 Expressive tinh gọn.
+Bộ phát hành độc lập, dựa trên M3 Review 04 đã duyệt: xanh Shin, Roboto Flex, Material Symbols Rounded và Material 3 Expressive tinh gọn.
 
 **Lần mở đầu dành cho học viên mới, không tự mở Demo.** Toàn bộ 20 thẻ, 5 bài học, nội dung Senpai, cây thành tựu và tem thư ở bốn mốc 1–3–6–11 được giữ nguyên.
 
