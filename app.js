@@ -3,7 +3,7 @@
    KAIZEN MỖI NGÀY · TQ02
    Một file HTML, dữ liệu lưu trong trình duyệt của từng máy.
    ========================================================= */
-var APP_VER = 'M3.3.1';
+var APP_VER = 'M3.3.2';
 var APP_NAME = 'Shin routine';
 var KEY = 'shin-m3-v1-data', KEY_DEMO = 'shin-m3-v1-demo', KEY_MODE = 'shin-m3-v1-mode';
 var DEMO_CLASS = 'DEMO-KZ';
