@@ -22,3 +22,12 @@
 .band-ruled .band-title{margin-bottom:calc(13px * var(--card-scale))}.band-ruled .band-anchor{margin-top:calc(13px * var(--card-scale))}
 .band-grid .band-pattern{top:61%;left:46%;background:linear-gradient(currentColor 1px,transparent 1px) 0 0/20px 20px,linear-gradient(90deg,currentColor 1px,transparent 1px) 0 0/20px 20px;mask-image:linear-gradient(140deg,transparent 5%,#000 100%)}
 .band-light .band-pattern{background:radial-gradient(ellipse at 92% 8%,#FFF 0%,#FFF 20%,transparent 65%);opacity:.28}
+.band-front .band-title-copy{flex:1;min-width:0}
+.band-front .band-personal{margin:0 0 calc(7px * var(--card-scale));font-size:max(11px,calc(11px * var(--card-scale)));letter-spacing:0}
+.band-front .band-personal .material-symbols-rounded{font-size:14px;width:14px;height:14px;flex-basis:14px}
+.band-front .band-icon svg{width:calc(21px * var(--card-scale));height:calc(21px * var(--card-scale))}
+.band-petals .band-pattern{opacity:.09}
+.band-petals .band-pattern>span{position:absolute;bottom:calc(92px * var(--card-scale));right:-4px;width:53px;height:102px;background:currentColor;border-radius:80% 80% 0 80%;transform-origin:bottom right;transform:rotate(-28deg)}
+.band-petals .band-pattern>span:nth-child(2){transform:rotate(-78deg)}
+.band-petals .band-pattern>span:nth-child(3){transform:rotate(-128deg)}
+.band-petals .band-pattern>span:nth-child(4){transform:rotate(-178deg)}

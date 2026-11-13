@@ -1,0 +1,12 @@
+/* Approved neutral navigation. Geometry, visibility and keyboard behavior remain unchanged. */
+.m3-review .m3-navigation{background:rgba(237,238,240,.85);box-shadow:none}
+.m3-review .m3-navigation>button{color:#62666D}
+.m3-review .m3-navigation>button[aria-current=page]{color:#353B45;font-weight:600}
+.m3-review .m3-navigation .m3-nav-indicator{position:relative;isolation:isolate;background:transparent}
+.m3-review .m3-navigation>button[aria-current=page] .m3-nav-indicator,.m3-review .m3-navigation>button.active .m3-nav-indicator{background:transparent}
+.m3-review .m3-navigation .m3-nav-indicator:before{content:'';position:absolute;inset:0;border-radius:20px;background:#D9DCE1;z-index:-1;opacity:0;transform:scaleX(.72);transition:opacity .2s ease,transform .26s ease;pointer-events:none}
+.m3-review .m3-navigation>button[aria-current=page] .m3-nav-indicator:before{opacity:1;transform:scaleX(1)}
+.m3-review .m3-navigation .shin-nav-icon{display:block;width:24px;height:24px;flex:0 0 24px;stroke-width:1.7;transition:stroke-width .2s ease}
+.m3-review .m3-navigation>button[aria-current=page] .shin-nav-icon{stroke-width:2}
+@media(display-mode:standalone){html{color-scheme:light}}
+@media(prefers-reduced-motion:reduce){.m3-review .m3-navigation .m3-nav-indicator:before,.m3-review .m3-navigation .shin-nav-icon{transition:none!important}}
