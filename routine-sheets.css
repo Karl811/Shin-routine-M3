@@ -1,0 +1,12 @@
+.sheet14-grip{position:sticky;top:0;z-index:12;display:flex;align-items:center;justify-content:center;flex:0 0 24px;width:100%;height:24px;min-height:24px;border:0;background:var(--surface-low,#F9F9FF);padding:0;margin:0;border-radius:26px 26px 0 0;cursor:grab;touch-action:none;user-select:none}
+.sheet14-grip>span{display:block;width:36px;height:5px;border-radius:4px;background:#C7CBD1}
+.sheet14-grip:active{cursor:grabbing}.sheet14-grip:focus-visible{outline:2px solid var(--primary);outline-offset:-4px}
+.sheet14-ready>.sh__h,.sheet14-ready>.ci40-top>.ci40-bar{touch-action:pan-x}
+.m3-review .sheet14-ready.f2-sheet>.f2-head{top:24px}
+.m3-review .sheet14-ready>.f2-detail-tabs{top:92px}
+.m3-review .sheet14-ready>.f2-step-progress{top:100px}
+.sheet14-dragging{will-change:transform;user-select:none;animation:none!important}
+.m3-review .sheet14-ready:not(.f2-sheet){padding-top:0}
+.sheet14-ready:not(.f2-sheet)>.sheet14-grip{width:100%;margin-left:0}
+@media(max-width:767px){.m3-review .ov:has(.sheet14-ready):not(:has(.habit-sheet33,.ref12-week,.f2-game14)){align-items:flex-end;padding-bottom:0}.m3-review .sheet14-ready{border-radius:28px 28px 0 0}.m3-review .sheet14-ready>.sh__h:not(.f2-head){top:24px}.m3-review .sheet14-ready>.f2-detail-tabs{top:92px}}
+@media(prefers-reduced-motion:reduce){.sheet14-ready{scroll-behavior:auto!important}}

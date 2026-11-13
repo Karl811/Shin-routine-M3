@@ -1,0 +1,20 @@
+/* Compact library cards retain two columns, full names and the original group colors. */
+.evening-mini-grid,.evening-library .f3-library-list{gap:8px}
+.evening-mini{display:grid;grid-template-columns:30px minmax(0,1fr);grid-template-rows:auto auto;column-gap:9px;row-gap:4px;align-content:center;align-items:center;min-height:94px;border-radius:20px;padding:12px 10px}
+.evening-mini>.flow-emblem{grid-column:1;grid-row:1 / 3;width:30px;height:30px;flex-basis:30px;margin:0;align-self:center}
+.evening-mini>.flow-emblem>.material-symbols-rounded{font-size:19px;width:19px;height:19px;flex-basis:19px}
+.evening-mini b{grid-column:2;grid-row:1;font-size:15px;line-height:1.3;margin:0;font-weight:600;overflow-wrap:normal;word-break:normal}
+.evening-mini small{grid-column:2;grid-row:2;font-size:11px;line-height:1.3;margin:0}
+.evening-mini-open{display:none}.evening-group-label{margin:17px 3px 9px}
+.play14-week-toolbar{display:flex;align-items:center;gap:5px;max-width:700px;margin:0 auto 14px}
+.m3-review .play14-week-toolbar>.m3-week-nav{flex:1;min-width:0;gap:3px;margin:0}
+.play14-week-toolbar .m3-week-nav>div{flex:1;min-width:0}
+.play14-saved{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;align-self:stretch;min-width:62px;min-height:52px;padding:6px;border:0;border-radius:18px;background:var(--secondary-container);color:var(--primary);font:600 11px/1.3 var(--f)}
+.play14-saved .material-symbols-rounded{font-size:22px;width:22px;height:22px;flex-basis:22px}
+.play14-saved-head{margin-bottom:8px}.play14-saved-head .flow-link{font-size:14px;padding-left:0}
+.play14-tool{margin-top:12px}.play14-tool-art{flex:0 0 64px;width:64px;height:64px;display:grid;place-items:center}.play14-tool-art svg{width:60px;height:60px}
+.m3-review .sheet.f2-game14{width:min(100%,560px);height:calc(100dvh - 56px);overflow:hidden;display:flex;flex-direction:column}
+.play14-intro{flex:none;margin:0;padding:0 20px 10px;font:400 14px/1.5 var(--f);color:var(--on-surface-variant)}
+.play14-frame{display:block;width:100%;flex:1;min-height:0;border:0;background:#F9F9FF}
+@media(max-width:767px){.m3-review .sheet.f2-game14{height:calc(100dvh - 14px - env(safe-area-inset-top));max-height:calc(100dvh - 14px - env(safe-area-inset-top));border-radius:28px 28px 0 0}.m3-review .ov:has(.f2-game14){align-items:flex-end;padding:14px 0 0}.play14-intro{font-size:13px;padding:0 16px 8px}.play14-week-toolbar .m3-week-nav>div>b{font-size:17px}.play14-week-toolbar .m3-week-nav>div>small{font-size:14px}.play14-week-toolbar .m3-week-nav>.m3-icon-button{width:40px;min-width:40px}.play14-saved{min-width:58px}}
+@media(max-width:359px){.evening-mini{padding:10px 8px;grid-template-columns:25px minmax(0,1fr);column-gap:7px}.evening-mini b{font-size:14px}.evening-mini>.flow-emblem{width:25px;height:25px}.play14-saved{min-width:50px;font-size:10px}}

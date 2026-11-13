@@ -1,9 +1,18 @@
-# Shin routine · M3.3.13
+# Shin routine · M3.3.14
 
 Bộ phát hành độc lập, dựa trên M3 Review 04 đã duyệt: xanh Shin, Roboto Flex, Material Symbols Rounded và Material 3 Expressive tinh gọn.
 
 **Lần mở đầu dành cho học viên mới, không tự mở Demo.** Toàn bộ 20 thẻ, 5 bài học, nội dung Senpai, cây thành tựu và tem thư ở bốn mốc 1–3–6–11 được giữ nguyên.
 
+
+## Điều chỉnh M3.3.14
+
+- Thư viện → Công cụ có **Tung thói quen**: chơi với 20 khối, xem gợi ý vào rổ và chủ động chọn rèn qua luồng thiết lập của app; game không tự ghi nhận hoàn thành.
+- Cửa sổ có thanh kéo xuống để đóng; Back quay về bước/màn trước trong app, tới điểm bắt đầu mới rời app.
+- Nút **Đáng nhớ** nằm cùng hàng chọn tuần. Thẻ nhỏ của Thói quen và Cách làm gọn hơn, giữ đủ tên và trạng thái.
+- Có **Xem-thu.command** cho Mac, **Xem-thu.cmd** cho Windows; bản xem thử dùng địa chỉ riêng ở cổng 8782. Bản M3.3.13 được giữ nguyên, chưa upload bản mới.
+
+Xem luồng sử dụng, dữ liệu và giới hạn kiểm tra điện thoại trong [CAP-NHAT-M3.3.14.md](CAP-NHAT-M3.3.14.md). Phần bên dưới ghi lại các phiên bản trước.
 
 ## Điều chỉnh M3.3.13
 
@@ -90,7 +99,7 @@ Tệp bản sao học viên được chọn **trong app để khôi phục**, kh
 
 ## Xem thử trên máy
 
-Nhấp đúp **Xem-thu.cmd**; máy cần có Node.js cho cách xem cục bộ này. App mở tại `http://127.0.0.1:8781/shin-routine-m3/`, khác địa chỉ của bản Review. GitHub Pages không cần Node.js.
+Nhấp đúp **Xem-thu.cmd**; máy cần có Node.js cho cách xem cục bộ này. App mở tại `http://127.0.0.1:8782/shin-routine-m3-14/`, khác địa chỉ của bản Review. GitHub Pages không cần Node.js.
 
 Hoặc mở terminal trong thư mục này, chạy `node preview.cjs`; dừng bằng Ctrl+C khi xem xong. Mở thẳng `index.html` bằng địa chỉ tệp không phải cách kiểm tra offline/lưu dữ liệu ổn định.
 
