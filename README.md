@@ -1,10 +1,19 @@
-# Shin routine · M3.3.11
+# Shin routine · M3.3.12
 
 Bộ phát hành độc lập, dựa trên M3 Review 04 đã duyệt: xanh Shin, Roboto Flex, Material Symbols Rounded và Material 3 Expressive tinh gọn.
 
 **Lần mở đầu dành cho học viên mới, không tự mở Demo.** Toàn bộ 20 thẻ, 5 bài học, nội dung Senpai, cây thành tựu và tem thư ở bốn mốc 1–3–6–11 được giữ nguyên.
 
-## Điều chỉnh M3.3.11
+## Điều chỉnh M3.3.12
+
+- Sửa tràn ngang ở Hôm nay và màn sau check-in, kể cả tên dài; giữ điều hướng trong màn hình điện thoại.
+- Thẻ giữ đầy đủ thông tin, co nhẹ chữ và khoảng cách theo chiều cao màn hình; tự căn lại khi phông chữ tải xong. Nhật ký dùng chữ nội dung 17 px trên điện thoại.
+- “Xem thẻ” có viền sáng và mũi tên. Tab Tuần bỏ ô “Điều bạn muốn nhớ tuần này”; nút “Mở thẻ tuần” rõ ràng hơn. Dữ liệu ghi nhớ cũ vẫn được giữ.
+- Thẻ tuần mở toàn màn hình điện thoại, lề 12 px, nội dung và bề mặt Material 3 gọn hơn.
+- Lá thư dùng giấy vàng ấm. Thành tựu có bố cục mới và nội dung 17 px. Bài học giảm chữ riêng trong khu vực bài học.
+- Dùng “Gửi một lời nhắn”; thư hiện trực tiếp dưới tem chờ. Hành trình và nhật ký xuất hiện dần theo cuộn, tôn trọng chế độ giảm chuyển động.
+
+Giữ các điều chỉnh đã duyệt từ M3.3.11:
 
 - Chốt màu vuốt C: xanh rừng / đỏ nâu; ẩn màu phía dưới khi hàng đứng yên để hết lộ viền.
 - Sửa hủy nhầm thao tác chạm trên điện thoại khi chuyển quyền nhận thao tác từ nút tên sang hàng.
@@ -23,7 +32,7 @@ Các tính năng tiếp tục giữ từ M3.3.10:
 - Shin mời thử thách theo tên học viên. Không có hoặc đã bỏ qua thì ẩn; nhận lời chưa được tính hoàn thành.
 - Giữ nguyên dữ liệu, cây, pattern thẻ, thanh điều hướng và danh tính PWA.
 
-Xem hướng dẫn cập nhật và kiểm tra tại [CAP-NHAT-M3.3.11.md](CAP-NHAT-M3.3.11.md).
+Xem hướng dẫn cập nhật và kiểm tra tại [CAP-NHAT-M3.3.12.md](CAP-NHAT-M3.3.12.md).
 
 ## Bổ sung M3.3.0
 
@@ -45,7 +54,7 @@ Khi cập nhật M3 đang dùng, **giữ nguyên địa chỉ app** và upload t
 - Hôm nay: danh sách theo mốc “Khi…”, vuốt phải đã làm, vuốt trái chưa làm. Chạm icon **Thẻ** để xem mặt trước; chạm tên hoặc **+** để ghi nhận đầy đủ.
 - Chọn **Để sau** giữ dòng chờ memo. Bản nháp vẫn được lưu khi tải lại và có thể bổ sung trong check-in cuối ngày. Chỉ ghi nhận đã lưu đủ nội dung mới tăng tiến độ.
 - Tuần: chạm chấm ngày để đọc ghi nhận tại chỗ; chạm tên thói quen vào thẳng Nhật ký. Nút sao xem các ghi chú đáng nhớ. Memo cuối ngày vẫn nằm trong nhật ký ngày.
-- Cách làm ở đầu thẻ, hai mặt thẻ gọn riêng trong màn hình; mặt trước theo màu nhóm, mặt sau xanh Shin có gợn sóng. Mục “Trở thành…” không bắt buộc.
+- Cách làm ở đầu thẻ, hai mặt thẻ gọn riêng trong màn hình; mặt trước theo màu nhóm, mặt sau cùng tông đậm hơn nhẹ. Mục “Trở thành…” không bắt buộc.
 - Hành trình giữ cây, hiệu ứng, thành tựu, tem và thư; thanh điều hướng nổi có ba tên tab.
 - Đặt ưu tiên màn hình dọc. Khả năng khóa hướng khi mở trên trình duyệt phụ thuộc thiết bị; cần thử trên điện thoại thật sau khi cập nhật.
 

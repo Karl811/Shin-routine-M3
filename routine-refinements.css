@@ -1,0 +1,107 @@
+/* The greeting's inherited nowrap was wider than the viewport once the
+   completed check-in button grew. Fix that layout before containing overflow. */
+@media(max-width:767px){
+ html,body.m3-review{overflow-x:clip}
+ .m3-review .m3-appbar{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:8px;width:100%;max-width:100%;box-sizing:border-box}
+ .m3-review .m3-heading,.m3-review .m3-heading>div{min-width:0}
+ .m3-review .m3-heading>div{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px}
+ .m3-review #pageTitle35{white-space:normal;overflow-wrap:anywhere;min-width:0;max-width:100%}
+ .m3-review .m3-top-actions{min-width:0;max-width:186px;gap:0}
+ .m3-review .m3-floating-action .ckb{max-width:142px;min-width:90px}
+ .m3-review .ckb>span:not(.material-symbols-rounded){min-width:0}
+ .m3-review .ckb span>small{white-space:normal;overflow-wrap:anywhere}
+ .m3-review #app,.m3-review #pv,.flow-today-list,.flow-empty{min-width:0;max-width:100%;box-sizing:border-box}
+ .m3-review .m3-navigation{left:14px;right:14px;width:auto;max-width:calc(100% - 28px);box-sizing:border-box}
+ .flow-empty h2,.flow-empty p{overflow-wrap:anywhere}
+}
+.ci40-sheet .ci40-hero-link{border:1px solid #F5F8FF99;border-radius:24px;padding:8px 14px;margin:12px 0 0;gap:8px;min-height:44px}
+.ci40-sheet .ci40-hero-link:hover{background:#FFFFFF12}
+.m3-review .ref12-week-open{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;min-height:52px;background:var(--primary-container);color:var(--on-primary-container);border-radius:24px;padding:12px 18px!important;text-decoration:none!important;margin-top:20px;font:600 16px/1.4 var(--f)!important}
+.ref12-week-open>.material-symbols-rounded:last-child{margin-left:auto}
+.m3-review .ref12-letters{display:grid;gap:8px;margin:0 0 16px;padding:0}
+.m3-review .ref12-letters>button{display:flex;align-items:center;gap:12px;width:100%;min-height:80px;margin:0;padding:14px;border-radius:22px;background:var(--surface-high);text-align:left}
+.ref12-letters>button>span{flex:1;min-width:0;overflow-wrap:anywhere}.ref12-letters time{display:block}
+.m3-review .ref12-letter-read .f3-letter-paper{background:#FFF4D6;border:1px solid #E8D9AF;border-radius:22px;box-shadow:0 3px 10px #78613B0C}
+.ref12-letter-read .f3-letter-meaning,.ref12-letter-read .f3-letter-date{color:#746044}
+.ref12-reveal{opacity:0;transform:translateY(14px);transition:opacity 320ms ease var(--ref12-delay,0ms),transform 380ms ease var(--ref12-delay,0ms)}
+.ref12-reveal.ref12-shown{opacity:1;transform:none}
+/* A smaller, focused achievement keeps the original memory and edit action. */
+.m3-review .sheet.ref12-achievement{padding:0;overflow:auto;background:var(--surface);border-radius:28px}
+.ref12-achievement>.sh__h{position:sticky;top:0;z-index:2;background:var(--surface);padding:12px 18px;margin:0;min-height:64px}
+.m3-review .ref12-achievement>.sh__h>b{font:600 18px/1.4 var(--f)}
+.ref12-achievement .tree-detail30{padding:20px 24px;text-align:left}
+.ref12-achievement .tree-detail-icon30{width:72px;height:72px;border-radius:24px;display:grid;place-items:center;margin:0 auto 18px;box-shadow:0 8px 22px #24354A12;animation:ref12-award-in 360ms ease both}
+.ref12-achievement .tree-detail-icon30 svg{width:52px;height:52px}
+.ref12-achievement .tree-detail-eyebrow30{font:600 12px/1.5 var(--f);letter-spacing:1px;color:var(--primary);text-align:center;margin:0 0 8px}
+.m3-review .ref12-achievement h2{font:650 24px/1.25 var(--f);text-align:center;margin:0 0 12px;overflow-wrap:anywhere}
+.ref12-achievement .tree-detail-level30{display:block;width:fit-content;margin:0 auto 22px;padding:8px 14px;border-radius:20px;background:var(--primary-container);color:var(--on-primary-container);font:500 13px/1.4 var(--f)}
+.ref12-achievement dl{margin:0 0 20px;display:grid;gap:10px}.ref12-achievement dl>div{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px solid var(--outline-variant)}
+.ref12-achievement dt{font:400 13px/1.5 var(--f);color:var(--muted)}.ref12-achievement dd{font:500 15px/1.5 var(--f);margin:0;text-align:right}
+.ref12-achievement .tree-memory-action30,.ref12-achievement blockquote{padding:18px;border:0;border-radius:20px;background:var(--surface-low);margin:0 0 16px}
+.ref12-achievement .tree-memory-action30 small,.ref12-achievement blockquote small{font:600 12px/1.5 var(--f);color:var(--muted);letter-spacing:.4px}
+.ref12-achievement .tree-memory-action30 p,.ref12-achievement .tree-memory-action30 b,.ref12-achievement blockquote p{font:400 17px/1.5 var(--f);margin:8px 0 0;display:block;overflow-wrap:anywhere}.ref12-achievement .tree-memory-action30 b{font-weight:500}
+.ref12-achievement .tree-reflection30 summary{font:500 15px/1.5 var(--f);min-height:48px;padding:12px 0;cursor:pointer}.ref12-achievement textarea.inp{font:400 16px/1.5 var(--f);margin:10px 0}
+.ref12-achievement .tree-detail-note30{font:400 13px/1.5 var(--f);color:var(--muted);margin:18px 0 0}
+.ref12-achievement .sbar{position:sticky;bottom:0;margin:0;padding:12px 20px;background:var(--surface)}
+@keyframes ref12-award-in{from{opacity:.4;transform:translateY(8px) scale(.92)}to{opacity:1;transform:none}}
+@media(max-width:767px){
+ /* Keep every card field visible; its type and spacing adapt to usable height. */
+ .m3-review .flow-card-mode #habit-body33{overflow:hidden;padding:6px 12px}
+ .flow-card-stage{--ref12-s:1;--balance-title:max(18px,calc(24px * var(--ref12-s)));--balance-body:max(13.5px,calc(18px * var(--ref12-s)));--balance-meta:max(10px,calc(12px * var(--ref12-s)))}
+ .flow-card-stage .flow-paper{padding:calc(14px * var(--ref12-s));min-height:0}
+ .flow-card-stage .growth-personal{min-width:0;max-width:100%;white-space:normal;overflow-wrap:anywhere}
+ .flow-card-stage .band-front{padding-left:calc(30px + 10px * var(--ref12-s))}
+ .flow-card-stage .band-front .band-rail{width:24px}.flow-card-stage .band-front .band-icon{top:16px}.flow-card-stage .band-front .band-icon .material-symbols-rounded{font-size:19px;width:19px;height:19px;flex-basis:19px}
+ .flow-card-stage .band-front .band-label{font-size:var(--balance-meta);left:4px;bottom:16px;letter-spacing:1px}
+ .flow-card-stage .flow-paper-top{min-height:34px;margin-bottom:calc(8px * var(--ref12-s));gap:4px}
+ .flow-card-stage .flow-card-how{min-height:34px;padding:4px 0 4px 4px}
+ .flow-card-stage .band-front .band-title{margin-bottom:calc(14px * var(--ref12-s))}
+ .flow-card-stage .band-front .band-title .flow-card-edit{min-height:36px;width:36px;flex-basis:36px;margin-top:-4px;padding:6px}
+ .flow-card-stage .band-front .band-block>small{margin-bottom:3px;line-height:1.25}
+ .flow-card-stage .band-front .band-block>p,.flow-card-stage .band-front .band-formula>.flow-who{line-height:1.3}
+ .flow-card-stage .band-front .band-anchor{margin-top:calc(12px * var(--ref12-s))}
+ .flow-card-stage .band-front .band-formula>.flow-who{margin-top:calc(12px * var(--ref12-s))}
+ .flow-card-stage .band-ruled .band-block{padding-bottom:calc(8px * var(--ref12-s))}
+ .flow-card-stage .flow-paper .flow-card-days{margin-top:calc(14px * var(--ref12-s))}
+ .flow-card-stage .flow-card-days .f2-day{min-height:34px;gap:3px}.flow-card-stage .flow-card-days .f2-day i{width:20px;height:20px}
+ .flow-card-stage .flow-card-owner{padding-top:calc(8px * var(--ref12-s));gap:4px 8px;line-height:1.3}.flow-card-stage .flow-card-owner small{line-height:1.3;margin-top:1px}
+ .flow-card-stage .flow-paper>.m3-progress-track{height:5px;margin-top:6px}
+ .flow-card-stage .flow-back .balance-back-title{margin-bottom:calc(14px * var(--ref12-s))}
+ .flow-card-stage .flow-back-label{margin-bottom:6px}.flow-card-stage .flow-japanese{gap:4px 10px}
+ .flow-card-stage .flow-japanese>p[lang=ja]{line-height:1.4}.flow-card-stage .flow-japanese>small{line-height:1.3}
+ .flow-card-stage .flow-japanese>.flow-translation{line-height:1.3;margin-top:6px}
+ .flow-card-stage .flow-benefit{line-height:1.35;margin-top:calc(12px * var(--ref12-s))}
+ .flow-card-stage .flow-senpai{margin-top:calc(14px * var(--ref12-s));padding:8px 10px;gap:8px;min-height:54px}.flow-card-stage .flow-senpai>span:first-child{width:28px;flex-basis:28px}.flow-card-stage .flow-senpai svg{width:28px;height:36px}
+ .flow-card-stage .flow-back>blockquote,.flow-card-stage .flow-back>blockquote p{line-height:1.35;margin-top:calc(12px * var(--ref12-s))}
+ /* Diary only: increase reading text without changing card/lesson typography. */
+ .growth-diary .growth-entry p{font-size:17px;line-height:1.5}.growth-diary .growth-entry time,.growth-diary .growth-muted{font-size:14px}.growth-diary .growth-status{font-size:15px}
+ .growth-diary .growth-week>summary,.growth-diary .growth-month-head b{font-size:16px}.growth-diary .growth-week>summary small{font-size:12px}
+ .growth-diary .growth-cell{font-size:15px}.growth-diary .growth-calendar>small{font-size:12px}.growth-diary .growth-shin-tip p{font-size:15px}.growth-diary .growth-shin-tip b{font-size:14px}
+ /* Lesson-specific: keep the rest of the app's approved typography untouched. */
+ .m3-review .ref12-lesson .f3-lesson-content p,.m3-review .ref12-lesson .f3-lesson-content li,.m3-review .ref12-lesson .f3-lesson-content blockquote,.m3-review .ref12-lesson .f3-lesson-content .lsbig,.m3-review .ref12-lesson .f3-lesson-content .say__b{font-size:17px!important;line-height:1.5!important}
+ .m3-review .ref12-lesson .f3-lesson-content .hw__k,.m3-review .ref12-lesson .f3-lesson-content .hd{font-size:13px!important;line-height:1.4!important}
+ .m3-review .ref12-lesson .f3-lesson-content h3{font-size:19px!important;line-height:1.35!important}
+ .m3-review .ref12-lesson .f2-how-title h2{font-size:23px!important;line-height:1.3!important}
+ /* Weekly report: full viewport and useful width, with quiet M3 surfaces. */
+ html:has(.ref12-week){overflow:hidden}.m3-review .ov:has(.ref12-week){padding:0;align-items:stretch}
+ .m3-review .sheet.ref12-week{width:100%;max-width:100%;height:calc(100dvh - var(--kb));max-height:calc(100dvh - var(--kb));border-radius:0;padding:0;background:var(--surface);overflow:auto}
+ .m3-review .sheet.ref12-week>.sh__h{position:sticky;top:0;z-index:8;min-height:64px;margin:0;padding:8px 12px;background:var(--surface);gap:8px}
+ .m3-review .sheet.ref12-week>.sh__h>b{font-size:18px!important;line-height:1.35!important;overflow-wrap:anywhere}
+ .m3-review .ref12-week .wk{padding:12px;margin:0}.ref12-week .wk__h{border:0;padding:4px 4px 16px;margin:0;gap:12px}
+ .m3-review .ref12-week .wk__h h2{font-size:24px!important;line-height:1.3!important}.m3-review .ref12-week .wk__h small{font-size:14px!important;line-height:1.4!important;overflow-wrap:anywhere}
+ .m3-review .sheet.ref12-week .wkshin{border:0;border-radius:22px;background:var(--primary-container);padding:18px;margin:0 0 16px}
+ .m3-review .ref12-week .wkshin>small{font-size:12px!important;color:var(--on-primary-container)}.m3-review .ref12-week .wkshin>p{font-size:17px!important;line-height:1.5!important;color:var(--on-primary-container)}
+ .m3-review .ref12-week .wlegend{gap:8px 12px;margin-bottom:18px}.m3-review .ref12-week .wlegend>span{font-size:13px!important;line-height:1.4!important}
+ .ref12-week .wk__hb{border:0;border-radius:22px;background:var(--surface-low);padding:16px;margin:0 0 12px;min-width:0}
+ .m3-review .ref12-week .wk__hb h3{font-size:19px!important;line-height:1.35!important;overflow-wrap:anywhere}.m3-review .ref12-week .wk__hb h3>.small{font-size:13px!important}
+ .m3-review .ref12-week .week-count-description31,.m3-review .ref12-week .wnotes,.m3-review .ref12-week .wnotes li,.m3-review .ref12-week .wnotes li>b{font-size:16px!important;line-height:1.5!important;overflow-wrap:anywhere}
+ .m3-review .ref12-week .days>div{font-size:13px!important}.ref12-week .wnotes li{border-bottom:1px solid var(--outline-variant)}
+ .m3-review .ref12-week .wk>.lbl,.m3-review .ref12-week .verif>div,.m3-review .ref12-week .verif>div>b{font-size:15px!important;line-height:1.5!important}
+ .m3-review .ref12-week #wkWin,.m3-review .ref12-week #wkBud,.m3-review .ref12-week #wkCode{font-size:16px!important;line-height:1.5!important}
+ .ref12-week>.btn{width:calc(100% - 24px);margin:0 12px 12px!important}.m3-review .ref12-week>.note{font-size:13px!important;margin:0 12px 20px!important}
+}
+@media(max-width:767px){
+ .m3-review .ref12-lesson .f3-lesson-content .pair>div,.m3-review .ref12-lesson .f3-lesson-content .lsq{font-size:16px!important;line-height:1.45!important}
+ .m3-review .ref12-lesson .f3-lesson-content .pair small{font-size:12px!important;line-height:1.4!important}
+}
+@media(prefers-reduced-motion:reduce){.ref12-reveal{opacity:1;transform:none;transition:none}.ref12-achievement .tree-detail-icon30{animation:none}}
