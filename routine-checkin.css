@@ -51,8 +51,8 @@ html:has(.ci40-sheet){overflow:hidden}
 .ci40-extra-row{display:flex;align-items:center;gap:8px;padding:6px 0}.ci40-extra-row>span{flex:1;min-width:0;overflow-wrap:anywhere;font:500 14px/1.5 var(--f)}.ci40-extra-row small{display:block;font:400 12px/1.5 var(--f);color:var(--muted)}.ci40-extra-row .f2-text-button{font:500 13px/1.5 var(--f);flex:none}
 .ci40-sheet .ci40-error{font:400 13px/1.5 var(--f);color:var(--error);margin:12px 0}.ci40-error[hidden]{display:none}
 /* Stronger swipe colors retain the current interaction and 32px icons. */
-.growth-swipe-shell{background:#173F79}.growth-swipe-under{background:linear-gradient(90deg,#173F79 50%,#D5A126 50%)}
-.growth-swipe-under>span{color:#F5F8FF}.growth-swipe-under>span:last-child{color:#3F2A00}.growth-swipe-under>span:first-child img{filter:brightness(0) invert(1)}.growth-swipe-under>span:last-child img{filter:brightness(0);opacity:.8}
+.growth-swipe-shell{background:transparent}.growth-swipe-under{background:linear-gradient(90deg,#3F6B50 50%,#A95C4D 50%)}
+.growth-swipe-under>span{color:#F5F8FF}.growth-swipe-under>span:last-child{color:#FFFFFF}.growth-swipe-under>span:first-child img{filter:brightness(0) invert(1)}.growth-swipe-under>span:last-child img{filter:brightness(0) invert(1);opacity:1}
 /* A quiet 20px overflow icon inside an accessible 44px target. */
 .m3-review #gear{width:44px;min-width:44px;height:44px;min-height:44px;padding:10px;background:transparent;color:var(--on-surface-variant)}.m3-review #gear>.touch-menu-icon{width:20px;height:20px;flex-basis:20px;stroke-width:3.2}.m3-review #gear:active{background:var(--surface-high)}
 @media(max-width:767px){.m3-review .ov:has(.ci40-sheet){padding:0;align-items:flex-end}.m3-review .sheet.ci40-sheet{width:100%;height:calc(100dvh - var(--kb));max-height:calc(100dvh - var(--kb));border-radius:0}.m3-review .sheet.ci40-sheet.f2-record{height:auto;max-height:calc(100dvh - 12px - var(--kb));border-radius:28px 28px 0 0}.ci40-sheet.f2-record .ci40-scroll{flex:1 1 auto}.ci40-sheet .ci40-top{padding-top:6px}.ci40-sheet .ci40-body{padding:22px 24px}.ci40-sheet .ci40-footer{padding-top:10px}}

@@ -31,3 +31,64 @@
 .band-petals .band-pattern>span:nth-child(2){transform:rotate(-78deg)}
 .band-petals .band-pattern>span:nth-child(3){transform:rotate(-128deg)}
 .band-petals .band-pattern>span:nth-child(4){transform:rotate(-178deg)}
+
+/* Approved: progress follows each group; the reverse is only slightly deeper. */
+.flow-paper>.m3-progress-track{background:color-mix(in srgb,var(--flow-ink) 16%,var(--flow-paper))}
+.flow-paper>.m3-progress-track>i{background:var(--flow-ink)}
+.flow-paper.flow-back{background:color-mix(in srgb,var(--flow-paper) 96%,var(--flow-ink) 4%);color:var(--flow-ink)}
+.flow-back::before,.flow-back::after{border-color:color-mix(in srgb,var(--flow-ink) 8%,transparent)}
+.flow-back .flow-japanese>small,.flow-back .flow-back-label,.flow-back .flow-benefit{color:var(--flow-secondary)}
+.flow-back .flow-card-how,.flow-back .flow-card-speak{color:var(--flow-ink)}
+.flow-back .flow-senpai{background:color-mix(in srgb,var(--flow-ink) 8%,var(--flow-paper));color:var(--flow-ink)}
+
+/* Three reading sizes on both faces. The card follows its content and the
+   existing body scrolls on a small phone; the footer stays reachable. */
+html:has(.flow-card-mode){overflow:hidden}
+.m3-review .flow-card-mode #habit-body33{display:block;flex:1 1 auto;min-height:0;overflow:auto}
+.flow-card-stage{display:block;flex:none;width:100%;--balance-title:26px;--balance-body:20px;--balance-meta:13px}
+.flow-card-stage .flow-paper{display:flex;flex-direction:column;flex:none;width:100%;height:auto;min-height:0;padding:22px;color:var(--flow-ink);align-self:flex-start}
+.flow-card-stage .band-front{padding-left:48px}
+.flow-card-stage .band-front .band-rail{width:30px}
+.flow-card-stage .band-front .band-icon{top:24px}
+.flow-card-stage .band-front .band-label{font:500 var(--balance-meta)/1.4 var(--f);letter-spacing:1.4px;left:6px;bottom:24px}
+.flow-card-stage .flow-paper-top{gap:8px;min-height:44px;flex-wrap:wrap;margin:0 0 18px}
+.flow-card-stage .flow-card-level{font:600 var(--balance-meta)/1.5 var(--f);letter-spacing:0}
+.flow-card-stage .flow-card-how{font:500 var(--balance-meta)/1.5 var(--f);min-height:44px;color:var(--flow-ink)}
+.flow-card-stage .band-front .band-title{gap:6px;margin:0 0 24px;padding:0;border:0}
+.flow-card-stage .flow-paper h2,.flow-card-stage .band-front .band-title h2{font:650 var(--balance-title)/1.25 var(--f);letter-spacing:-.4px;color:var(--flow-ink);margin:0;overflow-wrap:anywhere}
+.flow-card-stage .band-front .band-title .flow-card-edit{width:44px;flex-basis:44px;min-height:44px;margin-top:-6px;margin-right:-8px;color:var(--flow-ink)}
+.flow-card-stage .band-front .band-block{padding:0;border:0;margin:0}
+.flow-card-stage .band-front .band-block>small{font:600 var(--balance-meta)/1.5 var(--f);letter-spacing:.5px;margin:0 0 6px}
+.flow-card-stage .band-front .band-block>p{font:400 var(--balance-body)/1.5 var(--f);margin:0;color:var(--flow-secondary)}
+.flow-card-stage .band-front .band-block>.flow-action{font-weight:500;color:var(--flow-ink)}
+.flow-card-stage .band-front .band-anchor{margin-top:22px}
+.flow-card-stage .band-front .band-formula>.flow-who{font:400 var(--balance-body)/1.5 var(--f);margin:20px 0 0;color:var(--flow-secondary)}
+.flow-card-stage .band-ruled .band-block{padding-bottom:16px;border-bottom:1px solid color-mix(in srgb,var(--flow-ink) 9%,transparent)}
+.flow-card-stage .band-front .band-personal{font:500 var(--balance-meta)/1.5 var(--f);margin:0 0 8px}
+.flow-card-stage .flow-paper .flow-card-days{margin-top:26px;padding-top:0}
+.flow-card-stage .flow-card-days .f2-day{min-height:48px;gap:7px}
+.flow-card-stage .flow-card-days .f2-day small{font:400 var(--balance-meta)/1.4 var(--f)}
+.flow-card-stage .flow-card-owner{font:400 var(--balance-meta)/1.5 var(--f);padding-top:18px;flex-wrap:wrap;gap:8px 12px}
+.flow-card-stage .flow-card-owner small{font:400 var(--balance-meta)/1.5 var(--f);margin-top:3px}
+.flow-card-stage .flow-card-owner b{max-width:none;overflow-wrap:anywhere}
+.flow-card-stage .flow-card-owner>span:first-child{flex:1 1 120px;min-width:0}
+.flow-card-stage .flow-paper>.m3-progress-track{height:6px;margin-top:12px}
+.flow-card-stage .flow-back .balance-back-title{margin:0 0 24px}
+.flow-card-stage .flow-back-label{font:600 var(--balance-meta)/1.5 var(--f);letter-spacing:.5px;margin:0 0 12px}
+/* The pronunciation button has a real grid column. No absolute positioning
+   crosses Japanese, romaji, translation, or enlarged text. */
+.flow-card-stage .flow-japanese{position:static;display:grid;grid-template-columns:minmax(0,1fr) 44px;gap:8px 12px;align-items:start;padding:0;margin:0;min-width:0}
+.flow-card-stage .flow-japanese>p[lang=ja]{grid-column:1;grid-row:1;font:400 var(--balance-body)/1.65 var(--jp);margin:0;min-width:0;overflow-wrap:anywhere}
+.flow-card-stage .flow-japanese>small{grid-column:1;grid-row:2;font:400 var(--balance-meta)/1.5 var(--f);margin:0;padding:0;min-width:0;overflow-wrap:anywhere}
+.flow-card-stage .flow-japanese>.flow-translation{grid-column:1/-1;grid-row:3;font:500 var(--balance-body)/1.5 var(--f);margin:12px 0 0;min-width:0;overflow-wrap:anywhere}
+.flow-card-stage .flow-japanese>.flow-card-speak{position:static;grid-column:2;grid-row:1/span 2;align-self:start;justify-self:end;width:44px;min-width:44px;height:44px;min-height:44px;margin:0;padding:10px;background:color-mix(in srgb,var(--flow-ink) 7%,var(--flow-paper));color:var(--flow-ink)}
+.flow-card-stage .flow-benefit{font:400 var(--balance-body)/1.5 var(--f);margin:22px 0 0;color:var(--flow-secondary)}
+.flow-card-stage .flow-back>blockquote,.flow-card-stage .flow-back>blockquote p{font:400 var(--balance-body)/1.5 var(--f);margin:20px 0 0;overflow-wrap:anywhere}
+.flow-card-stage .flow-senpai{margin-top:26px;padding:15px 14px;gap:12px}
+.flow-card-stage .flow-senpai small,.flow-card-stage .flow-senpai b{font:500 var(--balance-meta)/1.5 var(--f)}
+/* Today: the icon is the separate card entry; the text still opens check-in. */
+.flow-card-entry{flex-basis:48px;min-height:64px;gap:0}
+.flow-card-entry .flow-emblem{width:44px;height:44px;flex-basis:44px;border-radius:15px}
+.flow-card-entry .flow-emblem .material-symbols-rounded{font-size:28px;width:28px;height:28px;flex-basis:28px}
+.flow-card-entry .flow-emblem svg{width:32px;height:32px}
+@media(max-width:359px){.flow-card-stage{--balance-title:24px;--balance-body:19px}.flow-card-stage .flow-paper{padding:20px}.flow-card-stage .band-front{padding-left:44px}.flow-card-stage .band-front .band-title{gap:2px}.flow-card-stage .flow-paper-top{gap:4px}.flow-card-stage .flow-card-how{gap:4px;padding-left:4px}}

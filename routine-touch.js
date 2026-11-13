@@ -44,7 +44,7 @@ document.addEventListener('pointermove',function(e){
   if(g.kind==='row'&&!g.frame)g.frame=requestAnimationFrame(function(){g.frame=0;if(TOUCH_GESTURE!==g)return;g.row.style.transform='translate3d('+touchSwipeTravel(g.dx,g.threshold)+'px,0,0)';g.shell.classList.toggle('touch-ready',Math.abs(g.dx)>=g.threshold);g.shell.classList.toggle('touch-left',g.dx<0);});
 },{passive:false});
 document.addEventListener('pointerup',function(e){
-  var g=TOUCH_GESTURE;TOUCH_GESTURE=null;if(!g||g.pointer!==e.pointerId){touchResetGesture(g);return;}
+  var g=TOUCH_GESTURE;if(!g||g.pointer!==e.pointerId)return;TOUCH_GESTURE=null;
   var dx=e.clientX-g.x,dy=e.clientY-g.y,horizontal=g.locked&&Math.abs(dx)>Math.abs(dy)*1.5;
   touchResetGesture(g);
   if(g.locked||Math.abs(dx)>12||Math.abs(dy)>12)FLOW_SWIPE_UNTIL=Date.now()+350;
@@ -55,7 +55,11 @@ document.addEventListener('pointerup',function(e){
   var input=$('#ntIn');if(input){input.focus({preventScroll:true});input.setSelectionRange(input.value.length,input.value.length);}
 });
 document.addEventListener('pointercancel',touchCancelGesture);
-document.addEventListener('lostpointercapture',function(e){if(TOUCH_GESTURE&&TOUCH_GESTURE.pointer===e.pointerId)touchCancelGesture();});
+/* Touch starts with implicit capture on the tapped child button. Transferring it
+   to the row emits lostpointercapture on that child; only loss from our current
+   capture owner cancels the swipe. Mouse-only drags do not exercise this path. */
+function touchLostCapture(e){if(TOUCH_GESTURE&&TOUCH_GESTURE.pointer===e.pointerId&&e.target===TOUCH_GESTURE.capture)touchCancelGesture();}
+document.addEventListener('lostpointercapture',touchLostCapture);
 window.addEventListener('blur',touchCancelGesture);
 document.addEventListener('visibilitychange',function(){if(document.hidden)touchCancelGesture();});
 document.addEventListener('click',function(e){

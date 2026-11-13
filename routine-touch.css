@@ -29,3 +29,11 @@
 .touch-challenge-actions .flow-link{font-size:14px;padding:10px}
 @media(max-width:359px){.m3-review .m3-heading{min-width:0}.m3-review #pageTitle35{white-space:normal;overflow-wrap:anywhere}.touch-challenge-bubble{padding:29px 20px 22px}.touch-challenge h3{font-size:20px}.touch-challenge-actions .btn{font-size:14px;padding:12px 16px}}
 @media(prefers-reduced-motion:reduce){.m3-review #gear,.growth-swipe-shell>.flow-today-row,.growth-swipe-under img{transition:none!important}}
+
+/* Hide the action layer at rest: the two antialiased rounded edges must never
+   paint a colored seam around an otherwise stationary row. */
+.growth-swipe-shell{background:transparent}
+.growth-swipe-under{visibility:hidden;opacity:0}
+.growth-swipe-shell.touch-swiping .growth-swipe-under{visibility:visible;opacity:1}
+.growth-swipe-shell>.flow-today-row{width:100%;margin:0;box-sizing:border-box}
+.growth-swipe-shell .flow-row-main{touch-action:pan-y;user-select:none;-webkit-user-select:none}
