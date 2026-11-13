@@ -111,7 +111,7 @@ document.addEventListener('click',function(e){
   if(a==='flowTodayReview'){PG=1;DW=0;FLOW_DAY=dk();FLOW_HABIT=null;JOURNAL_MODE31='day';render();window.scrollTo(0,0);}
   if(a==='flowMemoLater'&&NT){flowStashNote();var id=NT.id;NT=null;HABIT_RETURN33=null;closeOv(true);render();toast('Đã giữ '+esc(sname(id))+' · chờ '+((flowDraft(dk(),id)||{}).ans==='n'?'lý do':'memo')+'.');}
   if(a==='flowRemoveDraft'&&NT){var id=NT.id,d=NT.day,has=!!mark(d,id);flowClearDraft(d,id);if(has)writeRecord(id,d,'',undefined,undefined);NT=null;closeOv(true);save(true);if(has)recordFeedback(id,d,true);else{render();toast('Đã bỏ ghi nhận đang viết.');}}
-  if(a==='flowFlip'&&CARD){CARD.back=!CARD.back;if(!S.gFlip){S.gFlip=1;save();}drawCard();var paper=$('.flow-paper');if(paper&&!reduceMotion())paper.animate([{transform:'perspective(900px) rotateY(-24deg)',opacity:.5},{transform:'perspective(900px) rotateY(0)',opacity:1}],{duration:320,easing:'ease-out'});$('[data-act=flowFlip]').focus({preventScroll:true});}
+  if(a==='flowFlip'&&CARD)touchFlipCard(true);
   if(a==='flowHow'&&CARD){FLOW_HOW_RETURN={card:JSON.parse(JSON.stringify(CARD))};openHow(v);}
   if(a==='flowHowBack'&&FLOW_HOW_RETURN){var card=FLOW_HOW_RETURN.card;FLOW_HOW_RETURN=null;HW=null;closeOv(true);CARD=card;openOv('');drawCard();}
   if(a==='flowNoteCard'&&NT){flowStashNote();FLOW_NOTE_RETURN=JSON.parse(JSON.stringify(NT));NT=null;openCard(v,false);}
@@ -121,11 +121,7 @@ var flowDrawHow=drawHow;
 drawHow=function(){flowDrawHow();if(!FLOW_HOW_RETURN||!OV)return;var back=$('.f2-how .f2-head [data-act=card]',OV),done=$('.f2-how .f2-footer [data-act=card]',OV);[back,done].forEach(function(b){if(b)b.dataset.act='flowHowBack';});};
 
 /* A deliberate horizontal swipe; vertical scrolling and icon buttons remain independent. */
-var FLOW_GESTURE=null,FLOW_SWIPE_UNTIL=0;
-document.addEventListener('pointerdown',function(e){var row=e.target.closest('[data-flow-swipe]');if(!row||e.button!==0||e.target.closest('.flow-card-entry,.flow-row-plus'))return;FLOW_GESTURE={id:row.dataset.flowSwipe,x:e.clientX,y:e.clientY,row:row,pointer:e.pointerId};});
-document.addEventListener('pointermove',function(e){var g=FLOW_GESTURE;if(!g||g.pointer!==e.pointerId)return;var dx=e.clientX-g.x,dy=e.clientY-g.y;if(Math.abs(dy)>16&&Math.abs(dy)>Math.abs(dx)){g.row.style.transform='';FLOW_GESTURE=null;return;}if(Math.abs(dx)>12&&Math.abs(dx)>Math.abs(dy)*1.5){g.row.style.transform='translateX('+Math.max(-76,Math.min(76,dx))+'px)';g.row.classList.toggle('swipe-yes',dx>0);g.row.classList.toggle('swipe-no',dx<0);}}, {passive:true});
-document.addEventListener('pointerup',function(e){var g=FLOW_GESTURE;FLOW_GESTURE=null;if(!g||g.pointer!==e.pointerId)return;g.row.style.transform='';g.row.classList.remove('swipe-yes','swipe-no');var dx=e.clientX-g.x,dy=e.clientY-g.y;if(Math.abs(dx)<64||Math.abs(dx)<Math.abs(dy)*1.6)return;FLOW_SWIPE_UNTIL=Date.now()+350;openNote(g.id,dk());NT.ans=dx>0?'y':'n';flowStashNote();drawNote29();var input=$('#ntIn');if(input){input.focus({preventScroll:true});input.setSelectionRange(input.value.length,input.value.length);}});
-document.addEventListener('pointercancel',function(){if(FLOW_GESTURE){FLOW_GESTURE.row.style.transform='';FLOW_GESTURE.row.classList.remove('swipe-yes','swipe-no');FLOW_GESTURE=null;}});
+var FLOW_SWIPE_UNTIL=0;
 window.addEventListener('resize',function(){requestAnimationFrame(flowFitCard);});
 if(document.fonts)document.fonts.ready.then(flowFitCard);
 
