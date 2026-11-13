@@ -1,0 +1,24 @@
+/* Same group palettes, quieter outlines, approved left-rail patterns. */
+.flow-front.band-front{padding-left:calc(44px * var(--card-scale));border-color:color-mix(in srgb,var(--flow-ink) 8%,transparent)}
+.band-front:before,.band-front:after{content:none}
+.band-front .band-rail{position:absolute;inset:0 auto 0 0;width:calc(27px * var(--card-scale));background:color-mix(in srgb,var(--flow-ink) 4.5%,transparent);pointer-events:none;color:var(--flow-ink)}
+.band-front .band-icon{position:absolute;top:calc(22px * var(--card-scale));left:0;width:100%;display:flex;justify-content:center;opacity:.72}
+.band-front .band-icon .material-symbols-rounded{font-size:calc(21px * var(--card-scale));width:calc(21px * var(--card-scale));height:calc(21px * var(--card-scale));flex-basis:calc(21px * var(--card-scale))}
+.band-front .band-label{position:absolute;bottom:calc(22px * var(--card-scale));left:calc(7px * var(--card-scale));writing-mode:vertical-rl;transform:rotate(180deg);font:600 max(9px,calc(10px * var(--card-scale)))/1.3 var(--f);letter-spacing:1.8px;opacity:.36;white-space:nowrap}
+.band-front .band-pattern{position:absolute;inset:0;overflow:hidden;color:var(--flow-ink);opacity:.055;pointer-events:none;z-index:-1}
+.band-front .flow-paper-top{gap:4px}.band-front .flow-card-level{letter-spacing:0}
+.band-front .band-title{display:flex;align-items:flex-start;gap:4px;margin:calc(15px * var(--card-scale)) 0 calc(20px * var(--card-scale));flex-shrink:0}
+.band-front .band-title h2{flex:1;min-width:0;margin:0;font-size:calc(25px * var(--card-scale));line-height:1.25}
+.band-front .band-title .flow-card-edit{flex:0 0 36px;width:36px;min-height:40px;padding:7px}
+.band-front .band-block>small{display:block;font:600 max(11px,calc(11px * var(--card-scale)))/1.3 var(--f);letter-spacing:.7px;color:var(--flow-secondary);margin:0 0 5px}
+.band-front .band-block>p{margin:0;font:400 calc(17px * var(--card-scale))/1.4 var(--f);color:var(--flow-secondary);overflow-wrap:anywhere}
+.band-front .band-block>.flow-action{font-size:calc(19px * var(--card-scale));font-weight:500;color:var(--flow-ink)}
+.band-front .band-anchor{margin-top:calc(19px * var(--card-scale))}
+.band-front .band-formula>.flow-who{margin-top:calc(12px * var(--card-scale));font-size:calc(13px * var(--card-scale))}
+.band-front .flow-card-owner{flex-shrink:0}.band-front .flow-card-days{flex-shrink:0}
+.band-waves .band-pattern:before,.band-waves .band-pattern:after{content:'';position:absolute;width:165%;height:80%;left:-38%;top:70%;border:17px solid currentColor;border-radius:45%;transform:rotate(-18deg)}
+.band-waves .band-pattern:after{top:85%;left:-12%}
+.band-ruled .band-title,.band-ruled .band-block{padding-bottom:calc(12px * var(--card-scale));border-bottom:1px solid color-mix(in srgb,var(--flow-ink) 9%,transparent)}
+.band-ruled .band-title{margin-bottom:calc(13px * var(--card-scale))}.band-ruled .band-anchor{margin-top:calc(13px * var(--card-scale))}
+.band-grid .band-pattern{top:61%;left:46%;background:linear-gradient(currentColor 1px,transparent 1px) 0 0/20px 20px,linear-gradient(90deg,currentColor 1px,transparent 1px) 0 0/20px 20px;mask-image:linear-gradient(140deg,transparent 5%,#000 100%)}
+.band-light .band-pattern{background:radial-gradient(ellipse at 92% 8%,#FFF 0%,#FFF 20%,transparent 65%);opacity:.28}
