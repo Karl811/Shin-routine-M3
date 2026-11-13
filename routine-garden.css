@@ -1,0 +1,24 @@
+/* All scenery and palette changes stay within the journey tree panel. */
+.m3-review .m3-tree-panel.garden-panel{--garden-sky-top:#E1EDF6;--garden-sky-bottom:#F0F2F5;--garden-ground:#CEDCCB;--garden-grass:#98B09C;--garden-flower:#EDE0BB;--garden-sun:#F3DB9D;--garden-cloud:#FFF;--garden-rain:#91A9BE;background:var(--garden-sky-top);transition:background-color 12s ease,color 12s ease}
+.m3-review .garden-panel[data-garden-time=dawn]{--garden-sky-top:#E7E9F3;--garden-sky-bottom:#F5EDE3;--garden-sun:#F0D0A0}
+.m3-review .garden-panel[data-garden-time=dusk]{--garden-sky-top:#E4E6F0;--garden-sky-bottom:#F1E2D7;--garden-sun:#E9C29C}
+.m3-review .garden-panel[data-garden-weather=cloudy]{--garden-sky-top:#DFE5ED;--garden-sky-bottom:#EAEDF1}
+.m3-review .garden-panel[data-garden-weather=rain]{--garden-sky-top:#CAD3DF;--garden-sky-bottom:#E3E7EB;--garden-ground:#BFCEC9;--garden-cloud:#EFF2F6}
+.m3-review .garden-panel[data-garden-time=night]{--garden-sky-top:#283C56;--garden-sky-bottom:#52657B;--garden-ground:#859F9B;--garden-grass:#9EB8AB;--garden-flower:#C2C2AB;--garden-cloud:#9CABBF;--garden-rain:#BCCDDD;color:#E9EFF8}
+.m3-review .garden-panel[data-garden-time=night][data-garden-weather=cloudy]{--garden-sky-top:#2D3E53;--garden-sky-bottom:#4B5C70}
+.m3-review .garden-panel[data-garden-time=night][data-garden-weather=rain]{--garden-sky-top:#253447;--garden-sky-bottom:#435366;--garden-cloud:#8E9CAC}
+.garden-panel .garden-sky-top{stop-color:var(--garden-sky-top)}.garden-panel .garden-sky-bottom{stop-color:var(--garden-sky-bottom)}.garden-panel .garden-sky-top,.garden-panel .garden-sky-bottom{transition:stop-color 12s ease}
+.garden-panel .garden-back,.garden-panel .garden-front{pointer-events:none}.garden-panel .garden-cloud{fill:var(--garden-cloud);animation:gardenCloud 28s ease-in-out infinite alternate}.garden-panel .garden-clouds{opacity:.8}.garden-panel .garden-birds{color:#93A4AF;opacity:.55}.garden-panel .garden-grass{color:var(--garden-grass);opacity:.6;transform-origin:210px 360px;animation:gardenGrass 8s ease-in-out infinite}.garden-panel .garden-flower{opacity:.65}
+.garden-panel .garden-rain{color:var(--garden-rain);opacity:.55}.garden-panel .garden-rain-streak{animation:gardenRain 2s linear infinite;animation-delay:var(--garden-delay)}.garden-panel .garden-splash{transform-box:fill-box;transform-origin:center bottom;animation:gardenSplash 2.8s ease-out infinite;animation-delay:var(--garden-delay)}.garden-panel .garden-ripple{transform-box:fill-box;transform-origin:center;animation:gardenRipple 3.4s ease-out infinite;animation-delay:var(--garden-delay)}
+.garden-panel .garden-star{color:#F4F4E7;fill:currentColor;animation:gardenStar 6s ease-in-out infinite;animation-delay:var(--garden-delay)}.garden-panel .garden-celestial-glow,.garden-panel .garden-moon-halo{transform-box:fill-box;transform-origin:center;animation:gardenGlow 8s ease-in-out infinite}.garden-panel .garden-moon-halo{animation-delay:-4s}.garden-panel .garden-cricket{fill:currentColor;color:#A6B7A1;opacity:.7}
+.m3-review .garden-panel[data-garden-time=night]>.achievement-tree>ellipse:first-of-type{opacity:.12}
+.m3-review .garden-panel[data-garden-time=night] .m3-tree-heading h2{color:#E9EFF8}.m3-review .garden-panel[data-garden-time=night] .m3-tree-heading .m3-kicker,.m3-review .garden-panel[data-garden-time=night] .m3-tree-heading>span,.m3-review .garden-panel[data-garden-time=night]>.m3-button,.m3-review .garden-panel[data-garden-time=night]>p{color:#CFDCEB}.m3-review .garden-panel[data-garden-time=night] .shin-tree34>p{background:#3A506A;color:#E2EBF6}
+.garden-panel.garden-paused *{animation-play-state:paused!important}
+@keyframes gardenCloud{from{transform:translateX(-5px)}to{transform:translateX(12px)}}
+@keyframes gardenGrass{0%,100%{transform:skewX(-1deg)}50%{transform:skewX(1.5deg)}}
+@keyframes gardenRain{0%{transform:translate(5px,-38px);opacity:0}12%,80%{opacity:.65}100%{transform:translate(-5px,53px);opacity:0}}
+@keyframes gardenSplash{0%,65%,100%{transform:translateY(0) scale(.3);opacity:0}70%{opacity:.5}85%{transform:translateY(-4px) scale(1);opacity:.4}96%{transform:translateY(1px) scale(1.1);opacity:0}}
+@keyframes gardenRipple{0%,40%{transform:scale(.3);opacity:0}50%{opacity:.4}100%{transform:scale(1.3);opacity:0}}
+@keyframes gardenStar{0%,100%{filter:opacity(.4)}50%{filter:opacity(.9)}}
+@keyframes gardenGlow{0%,100%{transform:scale(.96);filter:opacity(.7)}50%{transform:scale(1.07);filter:opacity(1)}}
+@media(prefers-reduced-motion:reduce){.m3-review .garden-panel *{animation:none!important;transition:none!important}.m3-review .garden-panel{transition:none!important}.garden-panel .garden-splash{opacity:0}.garden-panel .garden-rain-streak{opacity:.35}.garden-panel .garden-ripple{opacity:.15}}

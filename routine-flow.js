@@ -1,3 +1,9 @@
+/* Clear titles are local to Today; stored names and other screens stay unchanged. */
+function flowTodayName(id){
+  if(id==='horenso')return 'Báo cáo, xác nhận';
+  if(id==='bot'&&H(id)&&H(id).bad==='mxh')return 'Giảm dần: lướt mạng xã hội';
+  return hname(id);
+}
 /* M3.3.0 · approved Today / Week / Journey flow. Existing records and keys stay intact. */
 var FLOW_DAY=null,FLOW_HABIT=null,FLOW_HOW_RETURN=null,FLOW_NOTE_RETURN=null,FLOW_CARD_OBSERVER=null;
 function flowGroup(id){var x=HMAP[id];return x&&!x.custom&&x.g>=1&&x.g<=4?' flow-group-'+x.g:' flow-group-custom';}
@@ -46,7 +52,7 @@ vToday=function(){
   var h='<div class="flow-today-toolbar" data-flow-type><span>'+done+'/'+all.length+' đã ghi nhận</span><button class="flow-link" data-act="collection">'+mi('menu_book')+'Thư viện</button></div>';
   if(!all.length)h+='<section class="flow-empty" data-flow-type>'+shin('hi')+'<h2>Một thẻ là đủ để bắt đầu</h2></section>';
   else if(!pending.length)h+='<section class="flow-empty" data-flow-type>'+shin('proud')+'<h2>Bạn đã thực hiện '+yes+'/'+all.length+' thói quen hôm nay</h2><p>'+(yes===all.length?'Bạn đã giữ nhịp hôm nay. Shin cùng bạn tiếp tục nhé.':'Mỗi lần nhìn lại là một bước hiểu mình hơn. Mai mình tiếp tục nhé.')+'</p><button class="flow-link" data-act="flowTodayReview">Xem lại hôm nay '+mi('arrow_forward')+'</button></section>';
-  else h+='<section class="flow-today-list" aria-label="Thói quen còn cần ghi nhận" data-flow-type>'+pending.map(function(id){var status=flowPendingText(d,id),u=H(id);return '<article class="flow-today-row'+flowGroup(id)+(status?' is-pending':'')+'" data-flow-swipe="'+id+'"><button class="flow-card-entry" data-act="flowFront" data-v="'+id+'" aria-label="Xem mặt trước thẻ '+esc(sname(id))+'"><span class="flow-emblem">'+flowIcon(id)+'</span><small>Thẻ</small></button><button class="flow-row-main" data-act="note" data-v="'+id+'|'+d+'"><b>'+esc(sname(id))+'</b><small>'+(status?esc(status):'Khi '+esc(u.anchor||'đến lúc đã chọn'))+'</small></button><button class="flow-row-plus" data-act="note" data-v="'+id+'|'+d+'" aria-label="Ghi nhận '+esc(sname(id))+'">'+mi('add')+'</button></article>';}).join('')+'</section>';
+  else h+='<section class="flow-today-list" aria-label="Thói quen còn cần ghi nhận" data-flow-type>'+pending.map(function(id){var status=flowPendingText(d,id),u=H(id);return '<article class="flow-today-row'+flowGroup(id)+(status?' is-pending':'')+'" data-flow-swipe="'+id+'"><button class="flow-card-entry" data-act="flowFront" data-v="'+id+'" aria-label="Xem mặt trước thẻ '+esc(flowTodayName(id))+'"><span class="flow-emblem">'+flowIcon(id)+'</span><small>Thẻ</small></button><button class="flow-row-main" data-act="note" data-v="'+id+'|'+d+'"><b>'+esc(flowTodayName(id))+'</b><small>'+(status?esc(status):'Khi '+esc(u.anchor||'đến lúc đã chọn'))+'</small></button><button class="flow-row-plus" data-act="note" data-v="'+id+'|'+d+'" aria-label="Ghi nhận '+esc(flowTodayName(id))+'">'+mi('add')+'</button></article>';}).join('')+'</section>';
   if(all.length<5)h+='<button class="flow-link flow-add" data-act="pick" data-flow-type>'+mi('add')+'Thêm thói quen</button>';
   return h;
 };
