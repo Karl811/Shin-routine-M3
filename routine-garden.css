@@ -22,3 +22,27 @@
 @keyframes gardenStar{0%,100%{filter:opacity(.4)}50%{filter:opacity(.9)}}
 @keyframes gardenGlow{0%,100%{transform:scale(.96);filter:opacity(.7)}50%{transform:scale(1.07);filter:opacity(1)}}
 @media(prefers-reduced-motion:reduce){.m3-review .garden-panel *{animation:none!important;transition:none!important}.m3-review .garden-panel{transition:none!important}.garden-panel .garden-splash{opacity:0}.garden-panel .garden-rain-streak{opacity:.35}.garden-panel .garden-ripple{opacity:.15}}
+
+/* One continuous sky across the whole panel; no rectangular picture background. */
+.m3-review .m3-tree-panel.garden-panel{background:linear-gradient(180deg,var(--garden-sky-top),var(--garden-sky-bottom) 78%,color-mix(in srgb,var(--garden-sky-bottom) 88%,var(--garden-ground)));display:flex;flex-direction:column;align-items:stretch}
+.m3-review .garden-panel>.achievement-tree{max-height:none;max-width:560px;width:100%;height:auto;margin:12px auto 22px;flex:0 0 auto}
+.m3-review .garden-panel>.shin-tree34{width:100%;max-width:380px;margin:0 auto 16px;flex-shrink:0;align-items:center}
+.m3-review .garden-panel>.m3-tree-heading,.m3-review .garden-panel>.m3-button,.m3-review .garden-panel>p{flex-shrink:0}
+.m3-review .garden-panel[data-garden-weather=storm]{--garden-sky-top:#A9B7C8;--garden-sky-bottom:#CBD4DE;--garden-cloud:#D8E0E8;--garden-ground:#A4B9B0;--garden-rain:#7C96AF}
+.m3-review .garden-panel[data-garden-time=night][data-garden-weather=storm]{--garden-sky-top:#243141;--garden-sky-bottom:#3F5165;--garden-cloud:#8D9BAA;--garden-rain:#BDCDDD}
+.garden-panel[data-garden-weather=storm] .tree-wind33{animation-name:gardenStormWind;animation-duration:5s}
+.garden-panel[data-garden-weather=storm] .garden-cloud{animation-duration:14s}
+.garden-panel[data-garden-weather=storm] .garden-rain-streak{animation-duration:1.4s}
+.garden-panel .garden-lightning{opacity:0;pointer-events:none}
+.garden-panel.garden-flashing .garden-lightning{animation:gardenLightning 1.8s ease-out both}
+@keyframes gardenStormWind{0%,100%{transform:rotate(-1.4deg)}50%{transform:rotate(2.4deg)}}
+@keyframes gardenLightning{0%,100%{opacity:0}18%{opacity:.65}55%{opacity:.15}}
+@media(max-width:767px){
+ .m3-review .m3-tree-layout:has(>.garden-panel){gap:0}
+ .m3-review .m3-tree-panel.garden-panel{box-sizing:border-box;height:var(--garden-phone-height,calc(100svh - 184px));min-height:440px;padding:20px 16px 14px}
+ .m3-review .garden-panel>.achievement-tree{flex:1 1 0;min-height:140px;max-height:none;max-width:none;width:calc(100% + 24px);margin:12px -12px 22px}
+ .m3-review .garden-panel>.shin-tree34{margin-bottom:10px}
+ .m3-review .garden-panel>.m3-button{align-self:center;min-height:40px;padding-top:8px;padding-bottom:8px}
+ .m3-review .m3-tree-layout:has(>.garden-panel)>.m3-tree-notes{margin-top:var(--garden-nav-space,104px)}
+}
+@media(prefers-reduced-motion:reduce){.garden-panel .garden-lightning{display:none}.garden-panel[data-garden-weather=storm] .tree-wind33{animation:none!important}}
