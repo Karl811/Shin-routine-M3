@@ -3,7 +3,7 @@
    KAIZEN MỖI NGÀY · TQ02
    Một file HTML, dữ liệu lưu trong trình duyệt của từng máy.
    ========================================================= */
-var APP_VER = 'M3.3.12';
+var APP_VER = 'M3.3.13';
 var APP_NAME = 'Shin routine';
 var KEY = 'shin-m3-v1-data', KEY_DEMO = 'shin-m3-v1-demo', KEY_MODE = 'shin-m3-v1-mode';
 var DEMO_CLASS = 'DEMO-KZ';
@@ -2093,7 +2093,7 @@ function drawStart(){
     body=(ST.edit?'<div class="ey">Đổi công thức</div>':'<div class="ey">Công thức của bạn</div>')+sentence(k)+(k==='k'?sugBox():'');
     if(k==='k') body+='<div class="qlab">Bạn sẽ làm vào lúc nào?</div>'+chipsFor(x.anchors||[],ST.anchor,'k','khi bước vào phòng');
     if(k==='a'){ var acts=[x.act]; if(x.pickBad){ BAD_OPTS.forEach(function(b){ if(b[0]===ST.bad&&b[2]) acts=[b[2]]; }); } body+='<div class="qlab">Việc nhỏ bạn sẽ làm?</div>'+(x.custom?'<input class="inp" id="stIn" data-in="st-a" maxlength="50" placeholder="Ví dụ: uống một ly nước" value="'+esc(ST.act)+'"><div class="tiny muted" id="stCnt" style="text-align:right">'+String(ST.act||'').length+'/50</div><p class="note">Chọn một việc thật nhỏ, làm trong 1–2 phút.</p>':chipsFor(acts,ST.act,'a','một việc thật nhỏ')); }
-    if(k==='w') body+='<div class="qlab">Bạn muốn trở thành người như thế nào? <small>· Không bắt buộc</small></div>'+chipsFor(x.who.concat(WHO_GEN),ST.who,'w','người đáng tin cậy')+'<button class="chp" data-act="flowWhoNone">Bỏ qua</button>';
+    if(k==='w') body+='<div class="qlab">Bạn muốn trở thành người như thế nào? <small>· Không bắt buộc</small></div>'+chipsFor(x.who.concat(WHO_GEN),ST.who,'w','người đáng tin cậy')+'<div><button class="evening-skip-choice" data-act="flowWhoNone">Bỏ qua bước này</button></div>';
   }
   if(ST.edit && ST.i===0 && H(ST.id) && S.slots.indexOf(ST.id)>=0) body+='<div class="pzrow"><button class="btn btn--ghost btn--sm" data-act="stPause" data-v="'+ST.id+'">'+ic('pause')+'Tạm dừng thẻ này</button><span class="note">Thẻ cất vào Thư viện, tiến độ vẫn giữ.</span></div>';
   var s=stState(), last=ST.i===ST.steps.length-1;

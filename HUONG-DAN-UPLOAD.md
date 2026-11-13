@@ -1,4 +1,4 @@
-> **Cập nhật M3.3.12 cho app đang dùng:** xem CAP-NHAT-M3.3.12.md. Upload vào đúng repository hiện tại, giữ địa chỉ app. Phần tạo repository bên dưới chỉ dành cho lần cài mới.
+> **Cập nhật M3.3.13 cho app đang dùng:** xem CAP-NHAT-M3.3.13.md. Upload vào đúng repository hiện tại, giữ địa chỉ app. Phần tạo repository bên dưới chỉ dành cho lần cài mới.
 
 # Đưa Shin M3 lên GitHub Pages
 
@@ -10,7 +10,7 @@ Bộ này chỉ chứa app và tài nguyên phát hành. Tệp JSON sao lưu h�
 
 ## 2. Upload đủ tệp
 
-1. Giải nén `Shin-Routine-M3-GitHub.zip` trên máy.
+1. Giải nén `Shin-routine-M3.3.13.zip` trên máy.
 2. Trong repository mới, chọn **Add file → Upload files**.
 3. Kéo **toàn bộ nội dung bên trong thư mục đã giải nén** vào trang upload, gồm `assets/`, `.nojekyll`, các tệp `.js`, `.css`, manifest, icon và hướng dẫn.
 4. Ghi nội dung commit, ví dụ `Phat hanh Shin M3.1.0`, rồi xác nhận lưu lên nhánh `main` theo nút GitHub hiển thị.
@@ -73,4 +73,4 @@ Upload toàn bộ các tệp của bản mới vào **repository M3 này**, gi�
 
 Nguồn chính thức: [tạo Pages](https://docs.github.com/en/pages/getting-started-with-github-pages/creating-a-github-pages-site), [chọn nhánh/thư mục phát hành](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site), [upload tệp và thư mục](https://docs.github.com/en/repositories/working-with-files/managing-files/adding-a-file-to-a-repository).
 
-Bản M3.3.12 có thêm `routine-growth.js` và `routine-growth.css`; hãy upload cả hai cùng các tệp còn lại. Không đổi địa chỉ app M3 đang dùng để giữ dữ liệu trên trình duyệt.
+Bản M3.3.13 có thêm `routine-growth.js` và `routine-growth.css`; hãy upload cả hai cùng các tệp còn lại. Không đổi địa chỉ app M3 đang dùng để giữ dữ liệu trên trình duyệt.

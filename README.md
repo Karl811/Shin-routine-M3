@@ -1,8 +1,22 @@
-# Shin routine · M3.3.12
+# Shin routine · M3.3.13
 
 Bộ phát hành độc lập, dựa trên M3 Review 04 đã duyệt: xanh Shin, Roboto Flex, Material Symbols Rounded và Material 3 Expressive tinh gọn.
 
 **Lần mở đầu dành cho học viên mới, không tự mở Demo.** Toàn bộ 20 thẻ, 5 bài học, nội dung Senpai, cây thành tựu và tem thư ở bốn mốc 1–3–6–11 được giữ nguyên.
+
+
+## Điều chỉnh M3.3.13
+
+- Bốn trang chính: **Hôm nay · Tuần · Hành trình · Thư viện**. Thư viện dùng thẻ nhỏ hai cột trên điện thoại, màu khớp với thẻ lớn; có Thói quen, Bài học và Công cụ.
+- Hôm nay giữ các kết quả trong mục **Đã ghi nhận hôm nay**; bản nháp vẫn ở phần cần ghi nhận. Phân biệt hoàn thành thói quen với hoàn tất ghi nhận.
+- Tuần có nút Nhật ký mở tại chỗ và nút Đáng nhớ có nhãn. Một thử thách tùy chọn mỗi tuần, sau ít nhất 7 ngày làm quen và đã có ghi nhận; giữ nguyên lịch sử thử thách cũ.
+- Thẻ đầy khung, giữ cỡ chữ, nội dung quá dài cuộn trong thẻ. Mặt sau đậm hơn; lật hai mặt trong 720 ms; nhấn giữ tạo cảm giác góc thẻ hạ xuống.
+- Nhật ký đưa ngày được chọn ngay dưới lịch, chú giải dễ đọc hơn. Điều chỉnh chữ theo từng vùng; sáu ô chỉ số Sổ tay gọn hơn và nội dung ba tab bớt giãn dòng.
+- Shin có thêm năm biểu cảm, chuyển động riêng, màu lời nói theo cảnh cây và lời nhắc khi hơn ba ngày chưa có ghi nhận, có xét mục tiêu tuần.
+- **Pomodoro:** mặc định 25 phút, chọn 1–180 phút, bắt đầu/tạm dừng/tiếp tục/đặt lại. Thời gian dựa vào mốc kết thúc, giữ được khi đổi trang hoặc mở lại. Không tự cộng ngày rèn, XP hay check-in. Chưa có chế độ nghỉ ngắn/nghỉ dài tự động.
+- **Nhắc rèn luyện đầu ngày:** Sổ tay → Cài đặt → Nhắc rèn luyện đầu ngày. Mặc định 07:00; học viên chủ động thêm và xác nhận trong lịch điện thoại. Không mở check-in; đây là lời nhắc qua lịch, không phải dịch vụ push của app.
+
+Xem chi tiết tại [CAP-NHAT-M3.3.13.md](CAP-NHAT-M3.3.13.md). Khi cập nhật, giữ đúng địa chỉ app và upload toàn bộ nội dung thư mục, gồm `routine-evening.js/css` và `routine-pomodoro.js`. Không xóa dữ liệu trình duyệt. Phần bên dưới ghi lại các phiên bản trước.
 
 ## Điều chỉnh M3.3.12
 

@@ -54,12 +54,18 @@
  }
  // M3.1.9: requested deltas in real pixels AFTER the approved 0.85 scale.
  function tunedMobileSize(el,size,refs){
+  // M3.3.13: deltas are real display pixels and confined to the named areas.
+  if(el.matches('.flow-entry-meta>time,.flow-entry-meta>.m3-status,.flow-day-entry>.evening-unrecorded'))return size-2;
+  if(el.matches('[data-notebook-tab=sum] .f3-memo>p'))return size-2;
+  if(el.matches('[data-notebook-tab=sum] .f3-stats b'))return size-4;
+  if(el.matches('[data-notebook-tab=sum] .f3-stats span'))return size-2;
+
   if(el.matches('input:not([type=checkbox]):not([type=radio]):not([type=range]):not([type=file]),textarea,select'))return size-2;
   if(el.matches('.f2-notebook .ver'))return size-5;
   if(el.matches('.f3-setting-label>small,.f3-setting-header>.sndt'))return size+1;
   if(el.matches('.f2-how-link b'))return size+1;
   if(el.matches('.f2-ci-row-head h3,.f2-recorded-row>b,.f2-ci-keep-note>b'))return size+2;
-  if(el.matches('.m3-tree-panel>p'))return size-4;
+  if(el.matches('.m3-tree-panel>p'))return size-7;
   if(el.matches('.m3-card-actions .m3-button,.f2-detail-footer>.m3-button,.m3-tree-heading .m3-kicker,.m3-tree-heading h2,.f3-lesson-row b,.f2-lesson .f2-how-title h2'))return size-1;
   if(el.matches('.ckb small')&&el.textContent.trim()==='Hẹn bạn ngày mai')return size-1;
   if(el.matches('.f2-how-content .dd .hd'))return size-2;
@@ -131,13 +137,14 @@
     var original=m.size*mobileTextScale;
     var tuned=tunedMobileSize(m.el,original,refs);
     var tunedLine=Number.isFinite(m.line)?m.line*mobileTextScale*(tuned/original):NaN;
+    if(m.el.closest('.f2-notebook .f3-notebook-body'))tunedLine=tuned*1.4;
     var line=Number.isFinite(tunedLine)?'line-height:'+Number(tunedLine.toFixed(3))+'px!important;':'';
     return '#shinTypographyRoot.m3-review.m3-release [data-shin-font-id="'+m.el.dataset.shinFontId+'"]{font-size:'+Number(tuned.toFixed(3))+'px!important;'+line+'}';
    }).join('\n');
   }
   observer.observe(document.body,{subtree:true,childList:true});
  }
- function queue(){if(pending)return;pending=true;requestAnimationFrame(function(){pending=false;apply();});}
+ function queue(records){if(Array.isArray(records)&&records.length&&records.every(function(r){return r.target.nodeType===1&&r.target.closest('.evening-pomodoro');}))return;if(pending)return;pending=true;requestAnimationFrame(function(){pending=false;apply();});}
  window.addEventListener('resize',queue);
  if(document.fonts)document.fonts.ready.then(queue);
  apply();
