@@ -34,7 +34,7 @@
        * Bộ 20 Thói Quen Tốt từ Shin routine · M3 theo ngôn ngữ thiết kế Google Tabletop
        * (Đã loại bỏ khối lập phương/rubic, giữ các thẻ mô-đun pastel, scoreboard, sticky note & bánh xe màu)
        */
-      const TABLETOP_HABITS = [
+      let TABLETOP_HABITS = [
         {
           id: 'chao',
           tag: 'GREETING',
@@ -152,7 +152,7 @@
           renderInner: () => `
             <div class="w-full h-full p-2.5 flex flex-col justify-between">
               <div class="font-mono-tag text-[7.5px] font-bold uppercase text-stone-800/75">NO EXCUSE</div>
-              <div class="text-[11px] font-extrabold leading-[1.15] tracking-tight">Nhận lỗi không viện cớ</div>
+              <div class="text-[11px] font-extrabold leading-[1.15] tracking-tight">Lắng nghe và sửa sai</div>
             </div>`
         },
         {
@@ -276,8 +276,8 @@
         },
         {
           id: 'ngu',
-          tag: 'SLEEP • 23:00',
-          title: 'Ngủ trước 23:00',
+          tag: 'SLEEP • 7–8h',
+          title: 'Ngủ trước 7–8h',
           habit: 'Ngủ trước 23 giờ để phục hồi trí não và sức khỏe bền vững',
           accent: '#4F46E5',
           shape: 'rect',
@@ -289,9 +289,9 @@
             <div class="w-full h-full px-2.5 py-1.5 flex items-center justify-between gap-1">
               <div class="min-w-0">
                 <div class="font-mono-tag text-[8px] font-bold uppercase text-indigo-800/75">BEDTIME</div>
-                <div class="text-[11px] font-extrabold leading-tight truncate">Ngủ trước 23h</div>
+                <div class="text-[11px] font-extrabold leading-tight truncate">Ngủ đủ giấc</div>
               </div>
-              <span class="px-1.5 py-1 rounded-lg bg-indigo-900 text-indigo-100 font-mono-tag text-[9px] font-bold">23:00</span>
+              <span class="px-1.5 py-1 rounded-lg bg-indigo-900 text-indigo-100 font-mono-tag text-[9px] font-bold">7–8h</span>
             </div>`
         },
         {
@@ -433,7 +433,8 @@
       ];
 
       const host = window.parent !== window && typeof window.parent.shinGameCatalog14 === 'function' ? window.parent : null;
-      const catalog = host ? host.shinGameCatalog14() : [];
+      const catalog = host ? host.shinGameCatalog14() : [{"id": "chao", "title": "Chủ động chào hỏi và cảm ơn", "shortTitle": "Chào hỏi và cảm ơn", "description": "chào người đầu tiên gặp, nhìn mắt, mỉm cười"}, {"id": "som", "title": "Đúng giờ, đúng hẹn", "shortTitle": "Đúng giờ, đúng hẹn", "description": "ra khỏi phòng sớm hơn 5 phút"}, {"id": "memo", "title": "Quan sát, hỏi và ghi lại", "shortTitle": "Quan sát, hỏi và ghi lại", "description": "ghi một lời dặn hoặc một điều học được"}, {"id": "5s", "title": "5S - Gọn gàng và ngăn nắp", "shortTitle": "5S - Gọn gàng và ngăn nắp", "description": "cất đồ về đúng chỗ"}, {"id": "xinloi", "title": "Lắng nghe và sửa sai", "shortTitle": "Lắng nghe và sửa sai", "description": "nghe hết lời góp ý, ghi điều cần xem lại"}, {"id": "5phut", "title": "Tận dụng 05 phút", "shortTitle": "Tận dụng 05 phút", "description": "làm một việc học nhỏ trong khoảng trống phù hợp"}, {"id": "camxuc", "title": "Nhận biết và điều chỉnh cảm xúc", "shortTitle": "Cảm xúc", "description": "hít ba hơi và gọi tên cảm xúc"}, {"id": "vandong", "title": "Vận động mỗi ngày", "shortTitle": "Vận động", "description": "vận động một chút vừa sức"}, {"id": "anuong", "title": "Ăn uống dinh dưỡng, điều độ", "shortTitle": "Ăn uống điều độ", "description": "chọn một việc nhỏ để chăm sóc bữa ăn"}, {"id": "ngu", "title": "Ngủ đủ giấc", "shortTitle": "Ngủ đủ giấc", "description": "chuẩn bị ngủ vào giờ mình đã chọn"}, {"id": "chitieu", "title": "Chi tiêu có kế hoạch", "shortTitle": "Chi tiêu", "description": "ghi một dòng chi tiêu"}, {"id": "viecko", "title": "Dám thử việc khó", "shortTitle": "Dám thử việc khó", "description": "chuẩn bị và thử một việc hơi ngại, vừa sức"}, {"id": "horenso", "title": "Báo cáo và xác nhận", "shortTitle": "Báo cáo và xác nhận", "description": "báo lại với người giao việc"}, {"id": "giup", "title": "Giúp đỡ một việc", "shortTitle": "Giúp đỡ một việc", "description": "hỏi xem bạn cần giúp gì"}];
+      TABLETOP_HABITS = TABLETOP_HABITS.filter(item => catalog.some(h => h.id === item.id));
       TABLETOP_HABITS.forEach(item => {
         const source = catalog.find(h => h.id === item.id);
         if(source){item.title=source.title;item.shortTitle=source.shortTitle;item.habit=source.description;}

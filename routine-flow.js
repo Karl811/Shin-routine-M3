@@ -103,7 +103,7 @@ document.addEventListener('click',function(e){
   if(a==='close'&&FLOW_NOTE_RETURN){e.preventDefault();e.stopImmediatePropagation();var note=FLOW_NOTE_RETURN;FLOW_NOTE_RETURN=null;closeOv(true);NT=note;openOv('');drawNote29();return;}
   var acts=['flowFront','flowJournal','flowDay','flowWeekNav','flowTodayReview','flowMemoLater','flowRemoveDraft','flowFlip','flowHow','flowHowBack','flowNoteCard','flowWhoNone'];if(acts.indexOf(a)<0)return;
   e.preventDefault();e.stopImmediatePropagation();
-  if(a==='flowWhoNone'&&ST){ST.who='';ST.custom.w=false;drawStart();}
+  if(a==='flowWhoNone'&&ST){ST.who='';ST.custom.w=false;stNext();}
   if(a==='flowFront'){FLOW_NOTE_RETURN=null;closeOv(true);openCard(v,false);}
   if(a==='flowJournal')flowOpenJournal(v);
   if(a==='flowDay'){var parts=v.split('|');if(FLOW_HABIT===parts[0]&&FLOW_DAY===parts[1]){FLOW_DAY=null;FLOW_HABIT=null;}else{FLOW_HABIT=parts[0];FLOW_DAY=parts[1];}var scroll=window.scrollY;renderPage();window.scrollTo(0,scroll);}

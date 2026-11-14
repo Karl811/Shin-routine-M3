@@ -32,7 +32,7 @@ openStart=function(id,edit){growthState().tips++;save();growthOpenStart(id,edit)
 var growthOpenCustom=openCustom;
 openCustom=function(id){growthState().tips++;save();growthOpenCustom(id);};
 var growthDrawStart=drawStart;
-drawStart=function(){growthDrawStart();if(!ST)return;var body=$('.sheet .lc');if(!body)return;var k=ST.steps[ST.i];body.insertAdjacentHTML('beforeend',growthTip(k)+(k==='w'?growthGoalPicker(ST.weekGoal||growthGoal(ST.id)):''));};
+drawStart=function(){growthDrawStart();if(!ST)return;var body=$('.sheet .lc');if(!body)return;var k=ST.steps[ST.i];body.insertAdjacentHTML('beforeend',growthTip(k)+'');};
 document.addEventListener('change',function(e){if(e.target.id==='growthGoal'&&ST)ST.weekGoal=+e.target.value;});
 var growthStNext=stNext;
 stNext=function(){var st=ST,last=st&&st.i===st.steps.length-1,n=st&&(st.weekGoal||growthGoal(st.id)),id=st&&st.id,cust=st&&st.cust;growthStNext();if(last&&!cust&&H(id)){growthSetGoal(id,n);save(true);render();}};

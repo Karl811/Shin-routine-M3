@@ -20,7 +20,7 @@ function stateOf(){var s=OV&&$('.sheet',OV),kind=kindOf(s),detail='';
 }
 function stash(){if(NT)flowStashNote();if(CI&&!CI.done)stashCI29();if(LETTER_FLOW37)stashLetterDraft37(true);}
 function handle(s){if(!s||s.querySelector(':scope > .sheet14-grip'))return;var b=document.createElement('button');b.type='button';b.className='sheet14-grip';b.setAttribute('aria-label','Kéo xuống để đóng');b.setAttribute('data-flow-type','');b.innerHTML='<span aria-hidden="true"></span>';b.title='Kéo xuống để đóng';s.prepend(b);s.classList.add('sheet14-ready');}
-function restore(f){busy=true;stash();closeOv(true);PG=f.page;S.storeView=f.view;JOURNAL_MODE31=f.mode;render();
+function restore(f){document.documentElement.classList.add('back16');busy=true;stash();closeOv(true);PG=f.page;S.storeView=f.view;JOURNAL_MODE31=f.mode;render();
  if(f.kind){openOv('');Object.keys(f.values).forEach(function(n){window[n]=copy(f.values[n]);});var s=$('.sheet',OV);s.className=f.className;OV.className=f.overlayClass;
   if(f.kind==='game14')shinGameOpen14();
   else if(f.kind==='detail'&&CARD)drawCard();
@@ -35,7 +35,7 @@ function restore(f){busy=true;stash();closeOv(true);PG=f.page;S.storeView=f.view
   else sheetSet(f.html);
   s=OV&&$('.sheet',OV);handle(s);if(s){s.scrollTop=f.sheetTop;var inner=$('.ci40-scroll',s);if(inner)inner.scrollTop=f.innerTop;var title=$('.sh__h button,.ci40-bar button',s);if(title)title.focus({preventScroll:true});}
  }else{Object.keys(f.values).forEach(function(n){window[n]=copy(f.values[n]);});ST=null;CI=null;NT=null;CARD=null;HW=null;GAME14_RETURN=false;render();}
- window.scrollTo(0,f.scroll);setTimeout(function(){busy=false;frames[index]=stateOf();},0);
+ window.scrollTo(0,f.scroll);document.querySelectorAll('#pv,.ov,.sheet,.m3-page').forEach(function(el){el.getAnimations().forEach(function(a){a.cancel();});});requestAnimationFrame(function(){requestAnimationFrame(function(){document.documentElement.classList.remove('back16');});});setTimeout(function(){busy=false;frames[index]=stateOf();},0);
 }
 function sync(){pending=0;var s=OV&&$('.sheet',OV);handle(s);if(busy||!S.name)return;var f=stateOf();if(!frames.length){
  var old=history.state;frames=[f];index=0;
@@ -70,3 +70,4 @@ document.addEventListener('DOMContentLoaded',function(){new MutationObserver(que
 window.addEventListener('scroll',function(){if(!busy&&frames[index])frames[index].scroll=window.scrollY;},{passive:true});
 document.addEventListener('scroll',function(e){if(busy||!frames[index]||!e.target.matches)return;if(e.target.matches('.sheet'))frames[index].sheetTop=e.target.scrollTop;if(e.target.matches('.ci40-scroll'))frames[index].innerTop=e.target.scrollTop;},{capture:true,passive:true});
 })();
+

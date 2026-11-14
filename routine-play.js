@@ -3,7 +3,7 @@ var GAME14_IDS=[],GAME14_RETURN=false,GAME14_DEMO=null;
 function shinGameResetScope14(){if(GAME14_DEMO!==DEMO){GAME14_IDS=[];GAME14_RETURN=false;GAME14_DEMO=DEMO;}}
 function shinGameCatalog14(){return HABITS.filter(function(x){return !x.custom;}).map(function(x){return {id:x.id,title:x.t,shortTitle:x.s,description:x.act};});}
 function shinGameSaved14(){shinGameResetScope14();return GAME14_IDS.slice();}
-function shinGameResults14(ids){shinGameResetScope14();GAME14_IDS=Array.from(new Set(ids)).filter(function(id){return HMAP[id]&&!HMAP[id].custom;}).slice(0,20);}
+function shinGameResults14(ids){shinGameResetScope14();GAME14_IDS=Array.from(new Set(ids)).filter(function(id){return HMAP[id]&&!HMAP[id].custom;}).slice(0,HABITS.length);}
 function shinGameSound14(){return !!S.sound;}
 function shinGameHabitState14(id){var u=H(id);return {onHand:S.slots.includes(id),exists:!!u,label:libStatus(id)[0]};}
 function shinGameIcon14(){return '<svg viewBox="0 0 64 64" fill="none" aria-hidden="true"><rect x="12" y="5" width="40" height="28" rx="8" fill="#E4ECFA"/><rect x="24" y="15" width="16" height="12" rx="2" stroke="#E88640" stroke-width="3"/><path d="M13 31h38M18 32l5 19h18l5-19M22 41h20M27 32l2 19m8-19-2 19" stroke="#B56F45" stroke-width="2.5" stroke-linecap="round"/><rect x="2" y="45" width="14" height="14" rx="4" fill="#97B6E8" transform="rotate(-12 2 45)"/><circle cx="52" cy="51" r="9" fill="#EEC66E"/></svg>';}

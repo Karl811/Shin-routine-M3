@@ -3,9 +3,9 @@
    KAIZEN MỖI NGÀY · TQ02
    Một file HTML, dữ liệu lưu trong trình duyệt của từng máy.
    ========================================================= */
-var APP_VER = 'M3.3.14';
+var APP_VER = 'M3.3.16';
 var APP_NAME = 'Shin routine';
-var KEY = 'shin-m3-v1-data', KEY_DEMO = 'shin-m3-v1-demo', KEY_MODE = 'shin-m3-v1-mode';
+var KEY = 'shin-curriculum16-v1-data', KEY_DEMO = 'shin-curriculum16-v1-demo', KEY_MODE = 'shin-curriculum16-v1-mode';
 var DEMO_CLASS = 'DEMO-KZ';
 var MAX_ACTIVE = 5;
 /* Ba cấp thẻ: số ngày cần làm ở mỗi cấp, người xác nhận để lên cấp tiếp theo */
@@ -1431,7 +1431,7 @@ function openCustom(editId){
     if(S.slots.indexOf(null)<0){ toast('5 khung đã đầy. Cất bớt một thẻ trước nhé.'); return; }
   }
   HMAP['__new']=cuDef('__new',{name:'',icon:'sao',g:5,act:'',why:'',who:''});
-  ST={id:editId||'__new', cust:true, edit:!!editId, steps:['cn','k','a','w','y'], i:0, pick:null, first:null, custom:{},
+  ST={id:editId||'__new', cust:true, edit:!!editId, steps:['cn','k','a','w','y','goal16'], i:0, pick:null, first:null, custom:{},
       anchor:u?u.anchor:'', act:u?u.act:'', who:u?u.who:'', bad:'', badOther:'',
       name:c?c.name:'', icon:c?c.icon:'sao', col:c?c.g:5, why:c?c.why:'', rhy:(c&&c.dip)?'p':'d'};
   openOv(''); drawStart();
@@ -1815,7 +1815,7 @@ function cardFront(id,o){
     else if(ready(id)) f+='<button class="btn btn--gold btn--sm invite" data-act="lvup" data-v="'+id+'">Lên cấp</button>';
     else if(u.master) f+='<button class="btn btn--sm" data-act="tokeep" data-v="'+id+'">Sang duy trì</button>';
     else f+=stampBtn(id,day);
-  } else f+='<div class="ct__own"><small>CHỦ THẺ</small><b class="muted" style="font-weight:500">Chưa có</b><small>Thẻ số '+cardNo(id)+' / 20</small></div><button class="btn btn--sm invite" data-act="start" data-v="'+id+'">Rèn thẻ này</button>';
+  } else f+='<div class="ct__own"><small>CHỦ THẺ</small><b class="muted" style="font-weight:500">Chưa có</b><small>Thẻ số '+cardNo(id)+' / '+HABITS.length+'</small></div><button class="btn btn--sm invite" data-act="start" data-v="'+id+'">Rèn thẻ này</button>';
   f+='</div></div>';
   return f;
 }
@@ -2041,7 +2041,7 @@ function openStart(id,edit){
   var x=HMAP[id], u=H(id);
   if(!edit && !u && S.slots.indexOf(null)<0){ toast('5 khung đã đầy. Cất bớt một thẻ trước nhé.'); return; }
   var steps=[]; if(!edit){ if(x.pickBad) steps.push('bad'); if(x.quiz) steps.push('quiz'); }
-  steps.push('k','a','w');
+  steps.push('k','a','w','goal16');
   ST={id:id, edit:!!edit, steps:steps, i:0, pick:null, first:null, custom:{},
       anchor:u?u.anchor:'', act:u?u.act:'', who:u?u.who:'', bad:u?u.bad:'', badOther:u?u.badOther:''};
   openOv(''); drawStart();
@@ -2234,25 +2234,8 @@ function buildPrint(){
 /* =========================================================
    DEMO GIÁO VIÊN
    ========================================================= */
-function buildDemo(){
-  var s=defState(), t=dk(); s.name='Minh Anh'; s.cls=DEMO_CLASS; s.teacher=4; s.created=addD(t,-60); s.ciCal=true; s.calAsked=1;
-  s.custom={u1:{name:'Uống nước sau khi dậy', icon:'nuoc', g:6, act:'uống một ly nước', why:'Để sáng nào mình cũng đủ tỉnh táo vào lớp.', born:addD(t,-20)}}; s.cseq=1; s.guideOff=true; s.gFlip=1; s.gHome=1; regCustom(s);
-  var plan={som:[-60,'active',3,-26], chao:[-30,'active',2,-12], '5s':[-9,'active',1,-9], memo:[-4,'active',1,-4], camon:[-58,'keep',3,-32], u1:[-20,'active',1,-20]};
-  var anc={som:'chuông báo thức reo',chao:'bước qua cổng trường','5s':'đứng dậy rời bàn học',memo:'thầy cô dặn dò',camon:'ai đó giúp mình', u1:'vừa thức dậy'};
-  var NOTE={chao:['Chào bác bảo vệ, bác cười lại','Chào cô Nhật bằng tiếng Nhật','Cúi 15° chưa chuẩn lắm'],som:['Có mặt 7:45, kịp ôn bài','Dậy ngay khi báo thức'],'5s':['Bàn học gọn, tìm sách nhanh','Xếp giày cả phòng'],memo:['Ghi lời dặn nộp bài thứ Sáu','Từ mới: 確認'],camon:['Cảm ơn cô nấu ăn','Cảm ơn bạn cho mượn bút'], u1:['Uống một ly sau khi dậy','Để cốc nước cạnh giường']};
-  Object.keys(plan).forEach(function(id){ var p=plan[id]; s.habits[id]={status:p[1], since:addD(t,p[0]), lv:p[2], lvSince:addD(t,p[3]), anchor:anc[id], act:HMAP[id].act, who:HMAP[id].who[0], quiz:'first', cf:p[2]>1?{2:{by:'Thanh Tâm',d:addD(t,p[3])}}:{}}; s.order.push(id); s.learnedXP[id]=1; });
-  s.slots=['chao','5s','memo','som','u1']; s.habits.camon.master=addD(t,-2); s.seen={chao:1,som:1,memo:1,'5s':1,camon:1,u1:1}; s.mood[addD(t,-1)]='4'; s.mood[addD(t,-2)]='3';
-  var notes=['Học được từ 締め切り nghĩa là hạn chót.','Quan sát thấy cô nấu ăn luôn xếp dép ngay ngắn.','Mai nhắc mình mang sổ memo.','Hôm nay biết cách cúi 15° cho đúng.','Từ mới: 確認 là xác nhận.'];
-  for(var i=60;i>=1;i--){ var d=addD(t,-i), any=false; s.log[d]={}; s.why[d]={}; s.notes[d]={};
-    s.order.forEach(function(id,k){ if(i>-plan[id][0]) return; any=true; if(i===2) return; var r=(i*7+k*3)%10; var m=r<8?'y':r<9?'p':'n'; s.log[d][id]=m; if(m==='y') s.notes[d][id]=NOTE[id][i%NOTE[id].length]; if(m==='n') s.why[d][id]=REASONS[(i+k)%REASONS.length][0]; });
-    if(any && i!==2) s.ci[d]={t:'21:05', note:(i%3===0?notes[i%notes.length]:''), p:pd(d).getDate()%PROMPTS.length};
-    s.opens[d]=1; }
-  s.log[t]={chao:'y'}; s.notes[t]={chao:'Chào bạn cùng phòng trước'};
-  var ws=wkStart(t); s.week[addD(ws,-7)]={rate:{chao:2,'5s':1,som:3},win:'Lần đầu chào cô Nhật bằng tiếng Nhật',buddy:'Thanh Tâm'};
-  s.tstamps=[{c:'KAIZEN',d:addD(ws,-5),w:addD(ws,-7)}]; s.xp=1240; s.ins=14;
-  return s;
-}
-
+/* Demo M3.3.16 được tạo mới trong refinement16.js, trước boot. */
+function buildDemo(){return defState();}
 function ntRefresh(){
   var b=$('#ntGo');if(b)b.disabled=!NT||!String(NT.text||'').trim();
   var e=$('#ntRequired34');if(e&&NT&&String(NT.text||'').trim())e.hidden=true;
@@ -2712,7 +2695,7 @@ function drawWeek(){
 }
 function wkImage(){
   var ws=WK, w=S.week[ws], list=weekIds31(ws), W=1080, Hh=Math.max(1550,1100+list.reduce(function(sum,id){var n=0;for(var z=0;z<7;z++)if((S.notes[addD(ws,z)]||{})[id])n++;return sum+280+Math.min(n,3)*42;},0)+Math.max(0,Math.ceil((w.win||'').length/46)-2)*44);
-  var cv=document.createElement('canvas'); cv.width=W; cv.height=Hh; var x=cv.getContext('2d');
+  var shareLines16=(document.querySelector('#shareReview16:checked') ? reviewLines16(ws) : []), extra16=shareLines16.length?110+shareLines16.length*80:0; Hh+=extra16; var cv=document.createElement('canvas'); cv.width=W; cv.height=Hh; var x=cv.getContext('2d');
   var F='"Roboto Flex",system-ui,sans-serif', J='"Noto Sans JP","Hiragino Sans",sans-serif';
   x.fillStyle='#FBF7EC'; x.fillRect(0,0,W,Hh);
   x.fillStyle='rgba(150,120,60,.07)'; for(var i=0;i<W;i+=18){ for(var j=0;j<Hh;j+=18){ x.fillRect(i,j,3,3); } }
@@ -2744,7 +2727,7 @@ function wkImage(){
   x.fillStyle='#52565C'; x.font='600 30px '+F; x.fillText('Thắng nhỏ tuần này:',70,y+30);
   x.fillStyle='#1A1A1A'; x.font='500 32px '+F; wrapT(x, w.win||'…', 70, y+80, W-140, 44);
   var tst=null; S.tstamps.forEach(function(s){ if(s.w===ws) tst=s; });
-  var by=Hh-190;
+  if(shareLines16.length){var sy16=Hh-230-extra16;x.fillStyle='#173F79';x.font='600 28px '+F;x.fillText('Nhịp ghi nhận trong tuần · Chủ động chia sẻ',70,sy16);x.fillStyle='#52565C';x.font='400 22px '+F;shareLines16.forEach(function(line,i){wrapT(x,line,70,sy16+50+i*80,W-140,30);});} var by=Hh-190;
   if(w.buddy){ stamp(140,by,60,'f'); x.fillStyle='#1A1A1A'; x.font='600 28px '+F; x.fillText('Bạn cùng tiến: '+short(w.buddy,22),220,by+10); }
   if(tst){ stamp(W-160,by,60,'t'); x.fillStyle='#1A1A1A'; x.font='600 28px '+F; x.textAlign='right'; x.fillText('Con dấu thầy cô',W-240,by+10); x.textAlign='left'; }
   x.fillStyle='#686E76';x.font='500 19px '+F;x.fillText('Xanh: đã làm · Vàng: một phần · Cam: chưa làm · Xám: không gặp dịp',70,Hh-90);
@@ -3358,4 +3341,7 @@ function journalStarToggle35(){
   var starred=JOURNAL_MODE31==='saved';
   return '<button class="journal-star31 journal-toggle33'+(starred?' selected':'')+'" data-act="journalSaved33" aria-pressed="'+starred+'" aria-label="'+(starred?'Về nhật ký theo ngày':'Xem ghi chú đáng nhớ')+'"><svg viewBox="0 0 24 24" width="22" height="22" fill="'+(starred?'currentColor':'none')+'" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l2.8 5.8 6.4.9-4.6 4.5 1.1 6.3L12 17.5l-5.7 3 1.1-6.3L2.8 9.7l6.4-.9z"/></svg></button>';
 }
+
+
+
 

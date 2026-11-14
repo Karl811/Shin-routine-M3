@@ -51,7 +51,7 @@ document.addEventListener('pointerup',function(e){
   if(!horizontal)return;
   if(g.kind==='card'){if(Math.abs(dx)>=64&&CARD&&CARD.id===g.card)touchFlipCard(false);return;}
   if(Math.abs(dx)<g.threshold||!g.row.isConnected)return;
-  openNote(g.id,dk());if(!NT||NT.id!==g.id)return;NT.ans=dx>0?'y':'n';flowStashNote();drawNote29();
+  openNote(g.id,dk());if(!NT||NT.id!==g.id)return;NT.ans=dx>0?'y':'n';NT.quick16=true;flowStashNote();drawNote29();
   var input=$('#ntIn');if(input){input.focus({preventScroll:true});input.setSelectionRange(input.value.length,input.value.length);}
 });
 document.addEventListener('pointercancel',touchCancelGesture);
