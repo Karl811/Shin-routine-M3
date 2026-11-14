@@ -1,0 +1,30 @@
+{
+  "feature_version": "M3.3.19",
+  "cache_build": "M3.3.19-5S.1",
+  "date": "2026-11-14",
+  "files": 51,
+  "original_package_untouched": true,
+  "regression_checks": {
+    "passed": 72,
+    "total": 72
+  },
+  "equivalence_checks": {
+    "passed": 170,
+    "total": 170,
+    "definition_comparison": [
+      "All 625 final global function and alias definitions match baseline",
+      "All 626 final global function and alias definitions match baseline"
+    ],
+    "scope": "Visible text geometry, fonts, colors and final global function definitions; not a proof of all possible states"
+  },
+  "chrome_layout_states": 372,
+  "webkit_extra_states": 171,
+  "javascript_errors_observed": 0,
+  "offline_checks": 6,
+  "subdirectory_offline_checks": 6,
+  "physical_phones_tested": false,
+  "known_limitations": [
+    "Classic global extension/wrapper architecture remains; no claim that all legacy code is unused or removed.",
+    "Browser comparison covers exercised states; actual phone keyboard/gesture behavior needs device review."
+  ]
+}
