@@ -62,7 +62,7 @@ document.addEventListener('pointercancel',function(){resetDrag(true);},true);
 document.addEventListener('lostpointercapture',function(e){if(drag&&drag.id===e.pointerId&&e.target===drag.owner)resetDrag(true);},true);
 window.addEventListener('blur',function(){resetDrag(true);});
 /* Escape follows the same view history as device Back. The close button still dismisses. */
-window.addEventListener('keydown',function(e){if((e.key==='Enter'||e.key===' ')&&e.target.matches('.sheet14-grip')){e.preventDefault();dismiss();return;}if(e.key!=='Escape'||!OV)return;e.preventDefault();e.stopImmediatePropagation();if(index>0)history.back();else dismiss();},true);
+window.addEventListener('keydown',function(e){if((e.key==='Enter'||e.key===' ')&&e.target.matches('.sheet14-grip')){e.preventDefault();dismiss();return;}if(e.key!=='Escape'||!OV)return;e.preventDefault();e.stopImmediatePropagation();if(window.breathEscape18&&window.breathEscape18())return;if(index>0)history.back();else dismiss();},true);
 document.addEventListener('input',queue,true);document.addEventListener('change',queue,true);
 document.addEventListener('click',function(){if(frames[index])frames[index].scroll=window.scrollY;queue();},true);
 document.addEventListener('DOMContentLoaded',function(){new MutationObserver(queue).observe(document.body,{subtree:true,childList:true});queue();});

@@ -3,7 +3,7 @@
    KAIZEN MỖI NGÀY · TQ02
    Một file HTML, dữ liệu lưu trong trình duyệt của từng máy.
    ========================================================= */
-var APP_VER = 'M3.3.16';
+var APP_VER = 'M3.3.18';
 var APP_NAME = 'Shin routine';
 var KEY = 'shin-curriculum16-v1-data', KEY_DEMO = 'shin-curriculum16-v1-demo', KEY_MODE = 'shin-curriculum16-v1-mode';
 var DEMO_CLASS = 'DEMO-KZ';
@@ -2234,7 +2234,7 @@ function buildPrint(){
 /* =========================================================
    DEMO GIÁO VIÊN
    ========================================================= */
-/* Demo M3.3.16 được tạo mới trong refinement16.js, trước boot. */
+/* Demo M3.3.18 được tạo mới trong refinement16.js, trước boot. */
 function buildDemo(){return defState();}
 function ntRefresh(){
   var b=$('#ntGo');if(b)b.disabled=!NT||!String(NT.text||'').trim();
