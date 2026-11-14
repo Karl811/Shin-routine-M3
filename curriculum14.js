@@ -112,5 +112,5 @@ var todayBase=flowTodayName;flowTodayName=function(id){return HABITS.some(functi
 // Người đã rèn thẻ thuộc bộ cũ vẫn tìm và đọc/sửa được; người mới chỉ thấy 14 thẻ.
 cardNo=function(id){var i=HABITS.findIndex(function(h){return h.id===id;});return i<0?'—':pad(i+1);};
 var offerBase=offerTier;offerTier=function(id){if(['chao','memo','xinloi','ngu','5phut','viecko'].indexOf(id)>=0){cuTierSheet(id);return;}offerBase(id);};
-APP_VER='M3.3.18';
+APP_VER='M3.3.19';
 })();

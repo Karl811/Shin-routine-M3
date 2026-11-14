@@ -15,7 +15,7 @@ function stateOf(){var s=OV&&$('.sheet',OV),kind=kindOf(s),detail='';
  else if(kind==='notebook')detail=NBTAB;
  else if(kind==='letter'&&LETTER_FLOW37)detail=LETTER_FLOW37.milestone+'|'+LETTER_FLOW37.mode;
  else if(kind==='other'&&s){var title=s.querySelector('h2,.sh__h>b');detail=title?title.textContent.trim():'';}
- var state={page:PG,view:S.storeView,mode:JOURNAL_MODE31,key:PG+'|'+(PG===3?S.storeView:PG===1?JOURNAL_MODE31:'')+'|'+kind+'|'+detail,kind:kind,values:{},scroll:window.scrollY,sheetTop:s?s.scrollTop:0,innerTop:s&&$('.ci40-scroll',s)?$('.ci40-scroll',s).scrollTop:0,html:s?s.innerHTML:'',className:s?s.className:'',overlayClass:OV?OV.className:''};
+ var state={page:PG,view:S.storeView,mode:JOURNAL_MODE31,key:PG+'|'+(PG===3?S.storeView:PG===1?JOURNAL_MODE31:'')+'|'+kind+'|'+detail,kind:kind,values:{},scroll:window.scrollY,sheetTop:s?s.scrollTop:0,innerTop:s&&$('.ci40-scroll,.f2-body,.lc,.letter-content37',s)?$('.ci40-scroll,.f2-body,.lc,.letter-content37',s).scrollTop:0,html:s?s.innerHTML:'',className:s?s.className:'',overlayClass:OV?OV.className:''};
  transient.forEach(function(n){state.values[n]=copy(window[n]);});return state;
 }
 function stash(){if(NT)flowStashNote();if(CI&&!CI.done)stashCI29();if(LETTER_FLOW37)stashLetterDraft37(true);}
@@ -33,7 +33,7 @@ function restore(f){document.documentElement.classList.add('back16');busy=true;s
   else if(f.kind==='library')drawStore();
   else if(f.kind==='letter'&&LETTER_FLOW37)drawLetter37();
   else sheetSet(f.html);
-  s=OV&&$('.sheet',OV);handle(s);if(s){s.scrollTop=f.sheetTop;var inner=$('.ci40-scroll',s);if(inner)inner.scrollTop=f.innerTop;var title=$('.sh__h button,.ci40-bar button',s);if(title)title.focus({preventScroll:true});}
+  s=OV&&$('.sheet',OV);handle(s);if(s){s.scrollTop=f.sheetTop;var inner=$('.ci40-scroll,.f2-body,.lc,.letter-content37',s);if(inner)inner.scrollTop=f.innerTop;var title=$('.sh__h button,.ci40-bar button',s);if(title)title.focus({preventScroll:true});}
  }else{Object.keys(f.values).forEach(function(n){window[n]=copy(f.values[n]);});ST=null;CI=null;NT=null;CARD=null;HW=null;GAME14_RETURN=false;render();}
  window.scrollTo(0,f.scroll);document.querySelectorAll('#pv,.ov,.sheet,.m3-page').forEach(function(el){el.getAnimations().forEach(function(a){a.cancel();});});requestAnimationFrame(function(){requestAnimationFrame(function(){document.documentElement.classList.remove('back16');});});setTimeout(function(){busy=false;frames[index]=stateOf();},0);
 }
@@ -68,6 +68,6 @@ document.addEventListener('click',function(){if(frames[index])frames[index].scro
 document.addEventListener('DOMContentLoaded',function(){new MutationObserver(queue).observe(document.body,{subtree:true,childList:true});queue();});
 /* Keep the current position without writing browser history during scrolling. */
 window.addEventListener('scroll',function(){if(!busy&&frames[index])frames[index].scroll=window.scrollY;},{passive:true});
-document.addEventListener('scroll',function(e){if(busy||!frames[index]||!e.target.matches)return;if(e.target.matches('.sheet'))frames[index].sheetTop=e.target.scrollTop;if(e.target.matches('.ci40-scroll'))frames[index].innerTop=e.target.scrollTop;},{capture:true,passive:true});
+document.addEventListener('scroll',function(e){if(busy||!frames[index]||!e.target.matches)return;if(e.target.matches('.sheet'))frames[index].sheetTop=e.target.scrollTop;if(e.target.matches('.ci40-scroll,.f2-body,.lc,.letter-content37'))frames[index].innerTop=e.target.scrollTop;},{capture:true,passive:true});
 })();
 

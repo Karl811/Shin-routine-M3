@@ -3,7 +3,7 @@
    KAIZEN MỖI NGÀY · TQ02
    Một file HTML, dữ liệu lưu trong trình duyệt của từng máy.
    ========================================================= */
-var APP_VER = 'M3.3.18';
+var APP_VER = 'M3.3.19';
 var APP_NAME = 'Shin routine';
 var KEY = 'shin-curriculum16-v1-data', KEY_DEMO = 'shin-curriculum16-v1-demo', KEY_MODE = 'shin-curriculum16-v1-mode';
 var DEMO_CLASS = 'DEMO-KZ';
@@ -2068,8 +2068,7 @@ function chipsFor(list,val,key,ph){
 }
 function drawStart(){
   var x=HMAP[ST.id], k=ST.steps[ST.i], body='';
-  var prog='<div class="prog">'+ST.steps.map(function(s,i){ return '<i class="'+(i<ST.i?'done':i===ST.i?'on':'')+'"></i>'; }).join('')+'</div>';
-  var head='<div class="sh__h">'+(ST.i>0?'<button class="back" data-act="stPrev" aria-label="Quay lại">'+ic('back')+'</button>':'')+prog+'<button class="x" data-act="close" aria-label="Đóng">'+ic('x')+'</button></div>';
+  var head=shinWizardHeader(ST);
   if(k==='bad'){
     body='<div class="row" style="margin-bottom:10px">'+hico(ST.id,'sm')+'<h2 style="margin:0">Bạn muốn giảm thói quen nào?</h2></div><div>'+
       BAD_OPTS.map(function(b){ return '<button class="chp'+(ST.bad===b[0]?' on':'')+'" data-act="stBad" data-v="'+b[0]+'">'+esc(b[1])+'</button>'; }).join('')+'</div>'+
